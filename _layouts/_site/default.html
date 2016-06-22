@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nutmeg Bowl</title>
+    <base href="{{ site.baseurl }}/" />
+    <script src="res/jquery.js"></script>
+    <script src="res/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="res/fa.css" />
+    <link rel="stylesheet" type="text/css" href="res/style.css" />
+  </head>
+  <body>
+    {{ site.baseurl }}
+    <header>
+       <i title="Menu" class="fa fa-bars menuButton shadowHover rounded pointer animate"></i>
+      <h1 id="title"><a href="/" class="noStyle">Nutmeg Bowl</a></h1>
+      <nav id="mainNav">
+        <div class="dropdown animate pointer" data-dropdown="1"><a class="noStyle" href="pricing.html">Pricing <i class="fa fa-caret-down"></i></a></div>
+          <div class="dropdownLinks animate hidden shadow" id="dropdown1">
+            <a class="dropdownLink noStyle" href="regular_pricing.html">Regular Pricing</a>
+            <a class="dropdownLink noStyle" href="family_fun_days.html">Family Fun Days</a>
+            <a class="dropdownLink noStyle" href="after_dark_special.html">After Dark Special</a>
+            <a class="dropdownLink noStyle" href="gift_cards.html">Gift Cards</a>
+          </div>
+        <div class="dropdown animate pointer" data-dropdown="2"><a href="leagues.html" class="noStyle">Leagues <i class="fa fa-caret-down"></i></a></div>
+          <div class="dropdownLinks animate hidden shadow" id="dropdown2">
+            <a class="dropdownLink noStyle" href="league_schedule.html">League Schedule</a>
+            <a class="dropdownLink noStyle" href="league_standings.html">League Standings</a>
+            <a class="dropdownLink noStyle" href="join_a_league.html">Join a League</a>
+          </div>
+        <div class="dropdown animate pointer" data-dropdown="3"><a href="backyard_playplace" class="noStyle">Backyard Playplace <i class="fa fa-caret-down"></i></a></div>
+          <div class="dropdownLinks animate hidden shadow" id="dropdown3">
+            <a class="dropdownLink noStyle" href="bypp_features.html">Features</a>
+            <a class="dropdownLink noStyle" href="bypp_pricing.html">Pricing</a>
+          </div>
+        <div class="dropdown animate pointer" data-dropdown="4"><a href="contact_us" class="noStyle">Contact Us <i class="fa fa-caret-down"></i></a></div>
+          <div class="dropdownLinks animate hidden shadow" id="dropdown4">
+            <a class="dropdownLink noStyle" href="staff.html">Staff</a>
+            <a class="dropdownLink noStyle" href="directions.html">Directions</a>
+            <a class="dropdownLink noStyle" href="website_information.html">Website Information</a>
+          </div>
+      </nav>
+      <div id="menu" class="animate hidden">
+        <i class="fa fa-search searchIcon"></i><input type="text" id="search" class="animate" placeholder="Search" />
+        <nav id="sideNav">
+          <a class="animate noStyle" href="/">Home</a>
+          <a class="animate noStyle" href="pricing.html">Pricing</a>
+          <a class="animate noStyle" href="leagues.html">Leagues</a>
+          <a class="animate noStyle" href="backyard_playplace.html">Backyard Playplace</a>
+          <a class="animate noStyle" href="contact_us.html">Contact Us</a>
+        </nav>
+      </div>     
+    </header>
+    {{ content }}
+    <footer>
+      <div class="shareBox">
+        <a id="facebookShareButton" target="_blank" class="noStyle shareButtonLink"><i class="fa fa-facebook shareButton pointer animate" title="Share on Facebook"></i></a>
+        <a id="twitterShareButton" target="_blank" class="noStyle shareButtonLink"><i class="fa fa-twitter shareButton pointer animate" title="Share on Twitter"></i></a>
+        <a id="googlePlusShareButton" target="_blank" class="noStyle shareButtonLink"><i class="fa fa-google-plus shareButton pointer animate" title="Share on Google Plus"></i></a>
+      </div>
+      <h2>Visit Us</h2>
+      <div><a target="_blank" href="https://www.google.com/maps/place/802+Villa+Ave,+Fairfield,+CT+06825/@41.1750132,-73.231007,17z/data=!3m1!4b1!4m5!3m4!1s0x89e80e3549ca49c3:0xaa6855288cdd70ad!8m2!3d41.1750132!4d-73.2288183">802 Villa Ave.</a>, Fairfield, CT, 06825</div>
+      <div><a target="_blank" href="https://www.facebook.com/NutmegBowl/">Facebook</a></div>
+      <h2>Contact Us</h2>
+      <div><a target="_blank" href="mailto:info@nutmegbowl.com">info@nutmegbowl.com</a></div>
+      <div><a target="_blank" href="tel:2033677741">203-367-7741</a></div>
+    </footer>
+  </body>
+</html>
