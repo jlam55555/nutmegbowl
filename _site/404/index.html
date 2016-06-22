@@ -2,35 +2,36 @@
 <html>
   <head>
     <title>Nutmeg Bowl</title>
-    <script src="/res/jquery.js"></script>
-    <script src="/res/script.js"></script>
-    <link rel='stylesheet' type='text/css' href='/res/fa.css' />
-    <link rel='stylesheet' type='text/css' href='/res/style.css' />
+    <base href="/" />
+    <script src="res/jquery.js"></script>
+    <script src="res/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="res/fa.css" />
+    <link rel="stylesheet" type="text/css" href="res/style.css" />
   </head>
   <body>
     <header>
        <i title="Menu" class="fa fa-bars menuButton shadowHover rounded pointer animate"></i>
-      <h1 id="title">Nutmeg Bowl</h1>
+      <h1 id="title"><a href="/" class="noStyle">Nutmeg Bowl</a></h1>
       <nav id="mainNav">
-        <div class="dropdown animate pointer" data-dropdown="1">Pricing <i class="fa fa-caret-down"></i></div>
+        <div class="dropdown animate pointer" data-dropdown="1"><a class="noStyle" href="pricing.html">Pricing <i class="fa fa-caret-down"></i></a></div>
           <div class="dropdownLinks animate hidden shadow" id="dropdown1">
             <a class="dropdownLink noStyle" href="regular_pricing.html">Regular Pricing</a>
             <a class="dropdownLink noStyle" href="family_fun_days.html">Family Fun Days</a>
             <a class="dropdownLink noStyle" href="after_dark_special.html">After Dark Special</a>
             <a class="dropdownLink noStyle" href="gift_cards.html">Gift Cards</a>
           </div>
-        <div class="dropdown animate pointer" data-dropdown="2">Leagues <i class="fa fa-caret-down"></i></div>
+        <div class="dropdown animate pointer" data-dropdown="2"><a href="leagues.html" class="noStyle">Leagues <i class="fa fa-caret-down"></i></a></div>
           <div class="dropdownLinks animate hidden shadow" id="dropdown2">
             <a class="dropdownLink noStyle" href="league_schedule.html">League Schedule</a>
             <a class="dropdownLink noStyle" href="league_standings.html">League Standings</a>
             <a class="dropdownLink noStyle" href="join_a_league.html">Join a League</a>
           </div>
-        <div class="dropdown animate pointer" data-dropdown="3">Backyard Playplace <i class="fa fa-caret-down"></i></div>
+        <div class="dropdown animate pointer" data-dropdown="3"><a href="backyard_playplace" class="noStyle">Backyard Playplace <i class="fa fa-caret-down"></i></a></div>
           <div class="dropdownLinks animate hidden shadow" id="dropdown3">
             <a class="dropdownLink noStyle" href="bypp_features.html">Features</a>
             <a class="dropdownLink noStyle" href="bypp_pricing.html">Pricing</a>
           </div>
-        <div class="dropdown animate pointer" data-dropdown="4">Contact Us <i class="fa fa-caret-down"></i></div>
+        <div class="dropdown animate pointer" data-dropdown="4"><a href="contact_us" class="noStyle">Contact Us <i class="fa fa-caret-down"></i></a></div>
           <div class="dropdownLinks animate hidden shadow" id="dropdown4">
             <a class="dropdownLink noStyle" href="staff.html">Staff</a>
             <a class="dropdownLink noStyle" href="directions.html">Directions</a>
@@ -40,11 +41,11 @@
       <div id="menu" class="animate hidden">
         <i class="fa fa-search searchIcon"></i><input type="text" id="search" class="animate" placeholder="Search" />
         <nav id="sideNav">
-          <a class="animate noStyle" href="index.html">Home</a>
-          <a class="animate noStyle" href="something.html">Placeholder</a>
-          <a class="animate noStyle" href="something2.html">Placeholder 2</a>
-          <a class="animate noStyle" href="something3.html">Placeholder 3</a>
-          <a class="animate noStyle" href="something4.html">Placeholder 4</a>
+          <a class="animate noStyle" href="/">Home</a>
+          <a class="animate noStyle" href="pricing.html">Pricing</a>
+          <a class="animate noStyle" href="leagues.html">Leagues</a>
+          <a class="animate noStyle" href="backyard_playplace.html">Backyard Playplace</a>
+          <a class="animate noStyle" href="contact_us.html">Contact Us</a>
         </nav>
       </div>     
     </header>
