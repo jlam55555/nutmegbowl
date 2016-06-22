@@ -34,8 +34,8 @@ $(function() {
   });
   // dropdown code
   $(".dropdown").each(function() {
-    $("#dropdown" + $(this).data("dropdown")).css({ top: $("nav#mainNav").position().top + $("nav#mainNav").height(), left: $(this).position().left });
     $(this).hover(function() {
+      $("#dropdown" + $(this).data("dropdown")).css({ top: $("nav#mainNav").position().top + $("nav#mainNav").height(), left: $(this).position().left });
       $(".dropdown").removeClass("linger");
       $(this).addClass("linger");
       $(".dropdownLinks").addClass("hidden");
