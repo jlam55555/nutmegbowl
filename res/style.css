@@ -9,6 +9,16 @@
   - #e9e9e9 "linen"
 */
 
+/* non-default fonts */
+@font-face {
+  font-family: shout;
+  src: url(./fonts/mohave.otf);
+}
+@font-face {
+  font-family: body;
+  src: url(./fonts/corbert.otf);
+}
+
 /* general styles */
 * {
   box-sizing: border-box;
@@ -21,18 +31,21 @@ a {
 body, html {
   margin: 0;
   font-size: 16px;
-  font-family: verdana, sans-serif;
+  font-family: body;
   background-color: white;
   color: #2c3c40;
 }
 body {
-  padding: 180px 100px 0 100px;
+  padding: 159px 100px 0 100px;
 }
 button, input, select, textarea {
   border: none;
   outline: none;
   font-size: inherit;
   font-family: inherit;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: shout;
 }
 html {
   padding: 0;

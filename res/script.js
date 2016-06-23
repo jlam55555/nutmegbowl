@@ -17,7 +17,7 @@ $(function() {
   };
   win.resize(function() {
     var footer = foot;
-    $("body").css({ paddingBottom: foot.height() + 2*getPxValue(foot.css("padding-top")) + 20 });
+    $("body").css({ paddingBottom: foot.height() + 2*getPxValue(foot.css("padding-top")) });
     foot.remove();
     docWidth = doc.width() > win.width() ? doc.width() : win.width();
     docHeight = doc.height() > win.height() ? doc.height() : win.height();
@@ -62,5 +62,8 @@ $(function() {
   $("#googlePlusShareButton").attr({ href: "https://plus.google.com/share?url=" + encodeURIComponent(window.location.href) });
 
   win.resize();
+  setTimeout(function() {
+    win.resize();
+  }, 500); 
 
 });
