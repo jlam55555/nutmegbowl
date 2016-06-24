@@ -143,6 +143,18 @@ header nav#mainNav a.dropdownLink {
 header nav#mainNav a.dropdownLink:hover {
   background-color: #e9e9e9;
 }
+p.underConstruction {
+  font-family: shout;
+  font-size: 50px;
+  text-align: center;
+  margin: 100px 0;
+}
+p.underConstruction span.fa-stack.first {
+  margin-right: 20px;
+}
+p.underConstruction span.fa-stack.second {
+  margin-left: 20px;
+}
 
 /* general classes */
 .animate {
@@ -152,6 +164,9 @@ header nav#mainNav a.dropdownLink:hover {
   content: " ";
   display: table;
   clear: both;
+}
+.dangerText {
+  color: #ef4e49;
 }
 .noStyle {
   border-bottom: none;
@@ -168,4 +183,7 @@ header nav#mainNav a.dropdownLink:hover {
 }
 .shadow {
   box-shadow: rgba(0, 0, 0, 0.2) 0 0 3px 3px;
+}
+.lightText {
+  color: white;
 }
