@@ -17,7 +17,8 @@ $(function() {
   };
   win.resize(function() {
     var footer = foot;
-    $("body").css({ paddingTop: $("header").height() + $("#mainNav").height(), paddingBottom: foot.height() + 2*getPxValue(foot.css("padding-top")) });
+    var extraPadding = $(".shoutButton").length > 0 ? 0 : 20;
+    $("body").css({ paddingTop: extraPadding + $("header").height() + $("#mainNav").height(), paddingBottom: extraPadding + foot.height() + 2*getPxValue(foot.css("padding-top")) });
     foot.remove();
     docWidth = doc.width() > win.width() ? doc.width() : win.width();
     docHeight = doc.height() > win.height() ? doc.height() : win.height();
