@@ -1,9 +1,20 @@
 $(function() {
 
-  // set element variables
-  var doc = $(document);
-  var win = $(window);
-  var foot = $("footer");
+  // array of elements; prevent repetitive DOM requestsa
+  var e = {
+    document: $(document),
+    window: $(window),
+    body: $("body"),
+    footer: $("footer"),
+    header: $("header"),
+    shoutButton: $(".shoutButton"),
+    mainNav: $("#mainNav"),
+    dropdown: $(".dropdown"),
+    dropdownLinks: $(".dropdownLinks"),
+    facebookShareButton: $("#facebookShareButton"),
+    twitterShareButton: $("#twitterShareButton"),
+    googlePlusShareButton: $("#googlePlusShareButton")
+  };
   
   // accessory functions
   var getPxValue = function(input) {
@@ -13,62 +24,60 @@ $(function() {
   // reposition the footer
   var docWidth, docHeight;
   var reposition = function() {
-    foot.css({ top: docHeight-foot.height()-getPxValue(foot.css("padding-top"))*2 });
+    e.footer.css({ top: docHeight-e.footer.height()-getPxValue(e.footer.css("padding-top"))*2 });
   };
-  win.resize(function() {
-    var footer = foot;
-    var extraPadding = $(".shoutButton").length > 0 ? 0 : 20;
-    $("body").css({ paddingTop: extraPadding + $("header").height() + $("#mainNav").height(), paddingBottom: extraPadding + foot.height() + 2*getPxValue(foot.css("padding-top")) });
-    foot.remove();
-    docWidth = doc.width() > win.width() ? doc.width() : win.width();
-    docHeight = doc.height() > win.height() ? doc.height() : win.height();
-    $("body").append(footer);
+  e.window.resize(function() {
+    var footerCopy = e.footer;
+    var extraPadding = e.shoutButton.length > 0 ? 0 : 20;
+    e.body.css({ paddingTop: extraPadding + e.header.height() + e.mainNav.height(), paddingBottom: extraPadding + e.footer.height() + 2*getPxValue(e.footer.css("padding-top")) });
+    e.footer.remove();
+    docWidth = e.document.width() > e.window.width() ? e.document.width() : e.window.width();
+    docHeight = e.document.height() > e.window.height() ? e.document.height() : e.window.height();
+    e.body.append(footerCopy);
     reposition();
-    $("div#menu").css({ height: win.height() });
   });
   // dropdown code
-  $(".dropdown").each(function() {
-    $(this).hover(function() {
-      $("#dropdown" + $(this).data("dropdown")).css({ top: $("nav#mainNav").height(), left: $(this).position().left });
-      $(".dropdown").removeClass("linger");
-      $(this).addClass("linger");
-      $(".dropdownLinks").addClass("hidden");
-      $("#dropdown" + $(this).data("dropdown")).removeClass("hidden");
+  e.dropdown.each(function() {
+    var thisElement = $(this), dropdown = $("#dropdown" + thisElement.data("dropdown"));
+    thisElement.hover(function() {
+      e.dropdown.removeClass("linger");
+      e.dropdownLinks.addClass("hidden");
+      thisElement.addClass("linger");
+      dropdown.css({ top: e.mainNav.height(), left: thisElement.position().left }).removeClass("hidden");
     }, function() {
-      var dropdown = $("#dropdown" + $(this).data("dropdown")), dropdownTab = $(this);
-      doc.mousemove(function(event) {
-        var x = event.pageX, y = event.pageY, minX = dropdown.position().left, minY = $("nav#mainNav").position().top, maxX = minX + dropdown.width(), maxY = minY + $("nav#mainNav").height() + dropdown.height();
+      e.document.mousemove(function(event) {
+        var x = event.pageX, y = event.pageY, minX = dropdown.position().left, minY = e.mainNav.position().top, maxX = minX + dropdown.width(), maxY = minY + e.mainNav.height() + dropdown.height();
         if(x < minX || x > maxX || y < minY || y > maxY) {
           dropdown.addClass("hidden");
-          doc.off("mousemove");
-          dropdownTab.removeClass("linger");
+          e.document.off("mousemove");
+          thisElement.removeClass("linger");
         }
       });
     });
   });
   // popups to share
-  $("body").on("click", ".shareButtonLink", function() {
+  e.body.on("click", ".shareButtonLink", function() {
     window.open($(this).attr("href"), "", "menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=500");
     return false;
   });
-  $("#facebookShareButton").attr({ href: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) });
-  $("#twitterShareButton").attr({ href: "https://twitter.com/intent/tweet?text=" + encodeURIComponent("Come visit at Nutmeg Bowl for the best bowling in Fairfield County! " + window.location.href) });
-  $("#googlePlusShareButton").attr({ href: "https://plus.google.com/share?url=" + encodeURIComponent(window.location.href) });
+  e.facebookShareButton.attr({ href: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) });
+  e.twitterShareButton.attr({ href: "https://twitter.com/intent/tweet?text=" + encodeURIComponent("Come visit at Nutmeg Bowl for the best bowling in Fairfield County! " + window.location.href) });
+  e.googlePlusShareButton.attr({ href: "https://plus.google.com/share?url=" + encodeURIComponent(window.location.href) });
   // scrolling menu
-  win.scroll(function() {
-    if($("body").scrollTop() > $("header").height())
-      $("nav#mainNav").addClass("fixed");
+  e.window.scroll(function() {
+    if(e.body.scrollTop() > e.header.height())
+      e.mainNav.addClass("fixed");
     else 
-      $("nav#mainNav").removeClass("fixed");
+      e.mainNav.removeClass("fixed");
   });
   // clickable .shoutButton for the homepage
-  $(".shoutButton").click(function() {
+  e.shoutButton.click(function() {
     window.location.href = $(this).data("href");
   });
 
-  win.resize();
+  e.window.resize();
   setTimeout(function() {
-    win.resize();
+    e.window.resize();
   }, 500); 
 
 });
