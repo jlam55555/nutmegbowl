@@ -17,7 +17,7 @@ $(function() {
   };
   win.resize(function() {
     var footer = foot;
-    $("body").css({ paddingBottom: foot.height() + 2*getPxValue(foot.css("padding-top")) });
+    $("body").css({ paddingTop: $("header").height() + $("#mainNav").height(), paddingBottom: foot.height() + 2*getPxValue(foot.css("padding-top")) });
     foot.remove();
     docWidth = doc.width() > win.width() ? doc.width() : win.width();
     docHeight = doc.height() > win.height() ? doc.height() : win.height();
@@ -25,17 +25,10 @@ $(function() {
     reposition();
     $("div#menu").css({ height: win.height() });
   });
-  // toggle menu
-  $(".menuButton").click(function() { $("div#menu").toggleClass("hidden").toggleClass("shadow"); });
-  doc.on("click", "*", function(event) {
-    event.stopPropagation();
-    if(!$(this).is("div#menu, div#menu *, .menuButton") && !$("div#menu").hasClass("hidden"))
-      $("div#menu").addClass("hidden").removeClass("shadow");
-  });
   // dropdown code
   $(".dropdown").each(function() {
     $(this).hover(function() {
-      $("#dropdown" + $(this).data("dropdown")).css({ top: $("nav#mainNav").position().top + $("nav#mainNav").height(), left: $(this).position().left });
+      $("#dropdown" + $(this).data("dropdown")).css({ top: $("nav#mainNav").height(), left: $(this).position().left });
       $(".dropdown").removeClass("linger");
       $(this).addClass("linger");
       $(".dropdownLinks").addClass("hidden");
@@ -60,6 +53,13 @@ $(function() {
   $("#facebookShareButton").attr({ href: "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href) });
   $("#twitterShareButton").attr({ href: "https://twitter.com/intent/tweet?text=" + encodeURIComponent("Come visit at Nutmeg Bowl for the best bowling in Fairfield County! " + window.location.href) });
   $("#googlePlusShareButton").attr({ href: "https://plus.google.com/share?url=" + encodeURIComponent(window.location.href) });
+  // scrolling menu
+  win.scroll(function() {
+    if($("body").scrollTop() > $("header").height())
+      $("nav#mainNav").addClass("fixed");
+    else 
+      $("nav#mainNav").removeClass("fixed");
+  });
 
   win.resize();
   setTimeout(function() {
