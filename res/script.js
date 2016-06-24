@@ -60,6 +60,10 @@ $(function() {
     else 
       $("nav#mainNav").removeClass("fixed");
   });
+  // clickable .shoutButton for the homepage
+  $(".shoutButton").click(function() {
+    window.location.href = $(this).data("href");
+  });
 
   win.resize();
   setTimeout(function() {
