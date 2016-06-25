@@ -13,7 +13,8 @@ $(function() {
     dropdownLinks: $(".dropdownLinks"),
     facebookShareButton: $("#facebookShareButton"),
     twitterShareButton: $("#twitterShareButton"),
-    googlePlusShareButton: $("#googlePlusShareButton")
+    googlePlusShareButton: $("#googlePlusShareButton"),
+    revealButton: $(".revealButton")
   };
   
   // accessory functions
@@ -28,7 +29,7 @@ $(function() {
   };
   e.window.resize(function() {
     var footerCopy = e.footer;
-    var extraPadding = e.shoutButton.length > 0 ? 0 : 20;
+    var extraPadding = e.shoutButton.length > 0 ? 0 : 50;
     e.body.css({ paddingTop: extraPadding + e.header.height() + e.mainNav.height(), paddingBottom: extraPadding + e.footer.height() + 2*getPxValue(e.footer.css("padding-top")) });
     e.footer.remove();
     docWidth = e.document.width() > e.window.width() ? e.document.width() : e.window.width();
@@ -73,6 +74,11 @@ $(function() {
   // clickable .shoutButton for the homepage
   e.shoutButton.click(function() {
     window.location.href = $(this).data("href");
+  });
+  // .reveal functionality
+  e.revealButton.click(function() {
+    $(this).parent().toggleClass("revealed");
+    e.window.resize();
   });
 
   e.window.resize();
