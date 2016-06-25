@@ -81,8 +81,10 @@ $(function() {
     e.window.resize();
   });
 
+  // resize the page
   e.window.resize();
   setTimeout(function() {
+    // resize again once everything loads
     e.window.resize();
   }, 500); 
 

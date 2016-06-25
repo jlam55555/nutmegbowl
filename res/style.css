@@ -20,9 +20,6 @@
 }
 
 /* general styles */
-::-webkit-scrollbar {
-  display: none;
-}
 * {
   box-sizing: border-box;
 }
