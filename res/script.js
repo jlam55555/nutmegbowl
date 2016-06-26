@@ -25,17 +25,22 @@ $(function() {
   // reposition the footer
   var docWidth, docHeight;
   var reposition = function() {
-    e.footer.css({ top: docHeight-e.footer.height()-getPxValue(e.footer.css("padding-top"))*2 });
+    e.footer.css({ top: docHeight-e.footer.height()-getPxValue(e.footer.css("padding-top"))*2 }).removeClass("static");
   };
   e.window.resize(function() {
-    var footerCopy = e.footer;
     var extraPadding = e.shoutButton.length > 0 ? 0 : 50;
-    e.body.css({ paddingTop: extraPadding + e.header.height() + e.mainNav.height(), paddingBottom: extraPadding + e.footer.height() + 2*getPxValue(e.footer.css("padding-top")) });
+    e.body.css({ paddingTop: e.header.height() + e.mainNav.height(), paddingBottom: extraPadding + e.footer.height() + 2*getPxValue(e.footer.css("padding-top")) });
     e.footer.remove();
     docWidth = e.document.width() > e.window.width() ? e.document.width() : e.window.width();
     docHeight = e.document.height() > e.window.height() ? e.document.height() : e.window.height();
-    e.body.append(footerCopy);
-    reposition();
+    e.body.append(e.footer);
+    if(e.document.height() > e.window.height()) {
+      e.footer.addClass("static").css({ marginTop: extraPadding });
+      e.body.addClass("noBottom");
+    } else {
+      reposition();
+      e.body.removeClass("noBottom");
+    }
   });
   // dropdown code
   e.dropdown.each(function() {
@@ -78,7 +83,7 @@ $(function() {
   // .reveal functionality
   e.revealButton.click(function() {
     $(this).parent().toggleClass("revealed");
-    e.window.resize();
+    $(this).next().slideToggle();
   });
 
   // resize the page
