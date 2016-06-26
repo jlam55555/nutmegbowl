@@ -54,8 +54,6 @@ $(function() {
     }, function() {
       e.document.mousemove(function(event) {
         var x = event.pageX, y = event.pageY-(e.mainNav.hasClass("fixed") ? e.body.scrollTop() : 0), minX = dropdown.position().left, minY = e.mainNav.position().top, maxX = minX + dropdown.width(), maxY = minY + e.mainNav.height() + dropdown.height();
-        console.log(x, minX, maxX);
-        console.log(y, minY, maxY);
         if(x < minX || x > maxX || y < minY || y > maxY) {
           dropdown.addClass("hidden");
           e.document.off("mousemove");
