@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<h1>{{ page.category }}</h1>
+<h2>Contents</h2>
+{% assign category = page.category %}
+{% for page in site.pages %}
+  {% if page.category == category and page.description != Nil %}
+    <div class="categoryListItem animate rounded pointer" data-href="{{ site.baseurl }}{{ page.url }}">
+      <i class="icon fa fa-fw fa-{{ page.icon }}"></i>
+      <div class="info">
+        <h3 class="title">{{ page.title }}</h3>
+        <p class="description">{{ page.description }}</p>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}
+<link rel="stylesheet" type="text/css" href="res/listing.html.css" />
