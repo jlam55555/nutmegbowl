@@ -1,0 +1,23 @@
+div.staff {
+  margin: 16px 0;
+  background-color: #e9e9e9;
+  padding: 50px;
+}
+div.staff div.name {
+  font-family: shout;
+  font-size: 40px;
+  display: inline-block;
+}
+div.staff div.title {
+  font-family: shout;
+  font-size: 20px;
+  padding: 16px 0;
+  display: inline-block;
+  margin-left: 10px;
+}
+div.staff div.title::before {
+  content: "[ ";
+}
+div.staff div.title::after {
+  content: " ]";
+}
