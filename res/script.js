@@ -52,7 +52,7 @@ $(function() {
       dropdown.css({ top: e.mainNav.height(), left: thisElement.position().left }).removeClass("hidden");
     }, function() {
       e.document.mousemove(function(event) {
-        var x = event.pageX, y = event.pageY, minX = dropdown.position().left, minY = e.mainNav.position().top, maxX = minX + dropdown.width(), maxY = minY + e.mainNav.height() + dropdown.height();
+        var x = event.pageX, y = event.pageY-e.body.scrollTop(), minX = dropdown.position().left, minY = e.mainNav.position().top, maxX = minX + dropdown.width(), maxY = minY + e.mainNav.height() + dropdown.height();
         if(x < minX || x > maxX || y < minY || y > maxY) {
           dropdown.addClass("hidden");
           e.document.off("mousemove");
