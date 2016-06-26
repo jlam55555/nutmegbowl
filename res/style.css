@@ -49,6 +49,7 @@ button, input, select, textarea {
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: shout;
+  font-weight: normal;
 }
 h2 {
   border-top: 1px solid #2c3c40;
@@ -57,6 +58,24 @@ h2 {
 }
 html {
   padding: 0;
+}
+table {
+  margin: 16px 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+table td, table th {
+  padding: 10px 20px;
+}
+table thead tr {
+  border-bottom: 3px solid #cdcdcd;
+  text-align: left;
+}
+table tbody tr {
+  border-bottom: 1px solid #cdcdcd;
+}
+table tbody tr:nth-child(odd) {
+  background-color: #e9e9e9;
 }
 
 /* specific styles */
