@@ -14,7 +14,8 @@ $(function() {
     facebookShareButton: $("#facebookShareButton"),
     twitterShareButton: $("#twitterShareButton"),
     googlePlusShareButton: $("#googlePlusShareButton"),
-    revealButton: $(".revealButton")
+    revealButton: $(".revealButton"),
+    categoryListItem: $(".categoryListItem")
   };
   
   // accessory functions
@@ -84,6 +85,10 @@ $(function() {
   e.revealButton.click(function() {
     $(this).parent().toggleClass("revealed");
     $(this).next().slideToggle();
+  });
+  // clickable links for .categoryListItem for listing pages
+  e.categoryListItem.click(function() {
+    window.location.href = $(this).data("href");
   });
 
   // resize the page
