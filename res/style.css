@@ -63,9 +63,11 @@ table {
   margin: 16px 0;
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 table td, table th {
   padding: 10px 20px;
+  width: 100%;
 }
 table thead tr {
   border-bottom: 3px solid #cdcdcd;
