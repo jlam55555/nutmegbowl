@@ -70,11 +70,10 @@ table {
   margin: 16px 0;
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
+  empty-cells: show;
 }
 table td, table th {
   padding: 10px 20px;
-  width: 100%;
 }
 table thead tr {
   border-bottom: 3px solid #cdcdcd;
@@ -227,6 +226,15 @@ div.reveal div.toReveal {
 }
 h1:not(#title) {
   padding-top: 50px;
+}
+table.schedule tr th:nth-child(1) {
+  width: 125px;
+}
+table.schedule tr th:nth-child(2), table.schedule tr th:nth-child(4) {
+  width: 100px;
+}
+table.schedule tr th:nth-child(3) {
+  width: 300px;
 }
 
 /* general classes */
