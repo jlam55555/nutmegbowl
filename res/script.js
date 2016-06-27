@@ -15,7 +15,8 @@ $(function() {
     twitterShareButton: $("#twitterShareButton"),
     googlePlusShareButton: $("#googlePlusShareButton"),
     revealButton: $(".revealButton"),
-    categoryListItem: $(".categoryListItem")
+    categoryListItem: $(".categoryListItem"),
+    standingsList: $("#standingsList")
   };
   
   // accessory functions
@@ -90,6 +91,15 @@ $(function() {
   e.categoryListItem.click(function() {
     window.location.href = $(this).data("href");
   });
+  // league standings for standings.html page
+  if(e.standingsList.length == 1)
+    $.getJSON("leagues/league_standings.json", function(data) {
+      var standings = "";
+      for(var league in data) {
+        standings += "<li><a href='" + data[league] + "' target='_blank'>" + league +"</a></li>";
+      }
+      e.standingsList.html(standings);
+    });
 
   // resize the page
   e.window.resize();
