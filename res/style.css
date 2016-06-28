@@ -16,7 +16,13 @@
 }
 @font-face {
   font-family: body;
-  src: url(./fonts/corbert.otf);
+  src: url(./fonts/cloudLight.otf);
+  font-weight: normal;
+}
+@font-face {
+  font-family: body;
+  src: url(./fonts/cloudBold.otf);
+  font-weight: bold;
 }
 
 /* general styles */
