@@ -304,7 +304,7 @@ div.titleImage div.triangle:first-of-type {
   border-bottom-color: transparent;
 }
 div.titleImage div.triangle:last-of-type {
-  margin-top: 300px;
+  margin-top: 400px;
   border-left-color: transparent;
   border-top-color: transparent;
 }
@@ -312,7 +312,7 @@ h1:not(#title) {
   font-size: 50px;
 }
 h1:not(#title) + div.titleImage {
-  margin-top: -75px;
+  margin-top: -50px;
 }
 
 /* general classes */
