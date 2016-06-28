@@ -320,6 +320,10 @@ h1:not(#title) {
 h1:not(#title) + div.titleImage {
   margin-top: -50px;
 }
+div#copyrightNotice {
+  text-align: center;
+  margin-top: 50px;
+}
 
 /* general classes */
 .animate {
