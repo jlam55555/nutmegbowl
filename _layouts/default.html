@@ -57,6 +57,9 @@
           </div>
       </nav>
     </header>
+    {% if page.image %}
+      <div style="background-image:url(images/{{ page.image }})" class="titleImage"></div>
+    {% endif %}
     {{ content }}
     <footer>
       <div class="shareBox">

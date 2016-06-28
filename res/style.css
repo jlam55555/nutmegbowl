@@ -284,6 +284,36 @@ blockquote.review:nth-child(odd) {
 blockquote.review:nth-child(even) {
   transform: rotate(2.5deg);
 }
+div.titleImage {
+  width: calc(100% + 200px); 
+  margin-left: -100px;
+  height: 500px;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+}
+div.titleImage div.triangle {
+  content: " ";
+  display: block;
+  width: 0;
+  height: 0;
+  border: solid white;
+}
+div.titleImage div.triangle:first-of-type {
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+div.titleImage div.triangle:last-of-type {
+  margin-top: 300px;
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+h1:not(#title) {
+  font-size: 50px;
+}
+h1:not(#title) + div.titleImage {
+  margin-top: -75px;
+}
 
 /* general classes */
 .animate {

@@ -16,7 +16,8 @@ $(function() {
     googlePlusShareButton: $("#googlePlusShareButton"),
     revealButton: $(".revealButton"),
     categoryListItem: $(".categoryListItem"),
-    standingsList: $("#standingsList")
+    standingsList: $("#standingsList"),
+    titleImage: $(".titleImage")
   };
   
   // accessory functions
@@ -42,6 +43,18 @@ $(function() {
     } else {
       reposition();
       e.body.removeClass("noBottom");
+    }
+    // resize triangular part if applicable
+    if(e.titleImage.length == 1) {
+      if(!e.titleImage.prev().is("h1:not(#title)")) {
+        $("h1:not(#title)").first().after(e.titleImage); 
+      }
+      if(e.hasOwnProperty("triangle")) {
+        e.triangle.css({ borderWidth: "50px " + (e.window.width()/2) + "px" });
+      } else {
+        e.titleImage.append($("<div class='triangle'></div><div class='triangle'></div>"));
+        e.triangle = $(".triangle").css({ borderWidth: "25px " + (e.window.width()/2) + "px" });
+      }
     }
   });
   // dropdown code
