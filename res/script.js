@@ -27,33 +27,21 @@ $(function() {
 
   // reposition the footer
   var docWidth, docHeight;
-  var reposition = function() {
-    e.footer.css({ top: docHeight-e.footer.height()-getPxValue(e.footer.css("padding-top"))*2 }).removeClass("static");
-  };
   e.window.resize(function() {
     var extraPadding = e.shoutButton.length > 0 ? 0 : 50;
-    e.body.css({ paddingTop: e.header.height() + e.mainNav.height(), paddingBottom: extraPadding + e.footer.height() + 2*getPxValue(e.footer.css("padding-top")) });
-    e.footer.remove();
+    e.body.css({ paddingTop: e.header.height() + e.mainNav.height() });
     docWidth = e.document.width() > e.window.width() ? e.document.width() : e.window.width();
     docHeight = e.document.height() > e.window.height() ? e.document.height() : e.window.height();
-    e.body.append(e.footer);
-    if(e.document.height() > e.window.height()) {
-      e.footer.addClass("static").css({ marginTop: extraPadding });
-      e.body.addClass("noBottom");
-    } else {
-      reposition();
-      e.body.removeClass("noBottom");
-    }
     // resize triangular part if applicable
     if(e.titleImage.length == 1) {
       if(!e.titleImage.prev().is("h1:not(#title)")) {
         $("h1:not(#title)").first().after(e.titleImage); 
       }
       if(e.hasOwnProperty("triangle")) {
-        e.triangle.css({ borderWidth: "1.6 " + (e.window.width()/2+2) + "px" });
+        e.triangle.css({ borderWidth: "1.5625em " + (e.window.width()/2+2) + "px" });
       } else {
         e.titleImage.append($("<div class='triangle'></div><div class='triangle'></div>"));
-        e.triangle = $(".triangle").css({ borderWidth: "1.6em " + (e.window.width()/2+2) + "px" });
+        e.triangle = $(".triangle").css({ borderWidth: "1.5625em " + (e.window.width()/2+2) + "px" });
       }
     }
   });
@@ -113,12 +101,11 @@ $(function() {
       }
       e.standingsList.html(standings);
     });
+  // set footer margin top (0 if homepage)
+  if(e.shoutButton.length > 0)
+    e.footer.css({ marginTop: 0 }); 
 
   // resize the page
   e.window.resize();
-  setTimeout(function() {
-    // resize again once everything loads
-    e.window.resize();
-  }, 500); 
 
 });

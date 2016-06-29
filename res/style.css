@@ -64,9 +64,6 @@ body, html {
 body {
   padding: 0 6.25em;
 }
-body.noBottom {
-  padding-bottom: 0 !important;
-}
 button, input, select, textarea {
   border: none;
   outline: none;
@@ -84,7 +81,7 @@ h2 {
 }
 html {
   padding: 0;
-  font-size: 2vmin;
+  font-size: 1em;
   font-family: body;
   background-color: white;
   color: #2c3c40;
@@ -121,17 +118,13 @@ ul {
 
 /* specific styles for any page */
 footer {
-  width: 100%;
+  width: calc(100% + 12.5em);
   padding: 3.125em;
+  margin: 3.125em 0 0 -6.25em;
   background-color: #2c3c40;
   color: white;
-  position: absolute;
-  left: 0;
-}
-footer.static {
   position: static;
-  width: calc(100% + 12.5em);
-  margin: 3.125em 0 0 -6.25em;
+  left: 0;
 }
 footer a {
   color: #aff1ff;
