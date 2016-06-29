@@ -21,6 +21,13 @@
     <header>
       <h1 id="title"><a href="{{ site.baseurl }}/" class="noStyle"><img src="images/logo.svg" id="logo" />Nutmeg Bowl</a></h1>
       <nav id="mainNav" class="clearFix">
+        <div class="mobile">
+          <i class="fa-stack openMenuButton pointer">
+            <i class="fa-stack-2x fa fa-square"></i>
+            <i class="fa-stack-1x fa fa-navicon"></i>
+          </i>
+          <a class="noStyle" href="{{ site.baseurl }}/">Nutmeg Bowl</a>
+        </div>
         <div class="dropdown pointer" data-dropdown="0"><a class="noStyle" href="about/">About <i class="fa fa-caret-down"></i></a></div>
           <div class="dropdownLinks animate hidden" id="dropdown0">
             <a class="dropdownLink noStyle" href="about/features">Features</a>
@@ -56,6 +63,15 @@
             <a class="dropdownLink noStyle" href="contact/staff">Staff</a>
             <a class="dropdownLink noStyle" href="contact/website_information">Website Information</a>
           </div>
+      </nav>
+      <nav id="sideNav" style="display:none">
+        <i class="fa fa-fw fa-times-circle-o pointer closeMenuButton"></i>
+        <a class="noStyle" href="{{ site.baseurl }}/">Home</a>
+        <a class="noStyle" href="about/">About</a>
+        <a class="noStyle" href="pricing/">Pricing</a>
+        <a class="noStyle" href="leagues/">Leagues</a>
+        <a class="noStyle" href="backyard_playplace/">Backyard Playplace</a>
+        <a class="noStyle" href="contact/">Contact Us</a>
       </nav>
     </header>
     {% if page.image %}

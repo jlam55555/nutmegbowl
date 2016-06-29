@@ -18,7 +18,9 @@ $(function() {
     revealButton: $(".revealButton"),
     categoryListItem: $(".categoryListItem"),
     standingsList: $("#standingsList"),
-    titleImage: $(".titleImage")
+    titleImage: $(".titleImage"),
+    sideNav: $("#sideNav"),
+    menuButtons: $(".closeMenuButton, .openMenuButton")
   };
   
   // accessory functions
@@ -45,6 +47,8 @@ $(function() {
         e.triangle = $(".triangle").css({ borderWidth: "1.5625em " + (e.window.width()/2+2) + "px" });
       }
     }
+    // resize size of #sideNav links for mobile
+    e.sideNav.children().css({ height: Math.ceil(e.window.height()/6), lineHeight: Math.ceil(e.window.height()/6) + "px" });
   });
   // dropdown code
   e.dropdown.each(function() {
@@ -105,6 +109,10 @@ $(function() {
   // set footer margin top (0 if homepage)
   if(e.shoutButton.length > 0)
     e.footer.css({ marginTop: 0 }); 
+  // mobile menu open/close
+  e.menuButtons.click(function() {
+    e.sideNav.slideToggle();
+  });
 
   // resize the page
   e.window.resize();
