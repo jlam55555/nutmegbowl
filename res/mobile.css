@@ -189,19 +189,46 @@ header nav#sideNav {
   background-color: white;
   z-index: 6;
 }
+header nav#sideNav span#sideNavTitle {
+  float: left;
+  display: inline-block;
+  font-size: 4rem;
+  padding: 0.2em;
+  font-family: shout;
+  line-height: 4.4rem !important;
+}
 header nav#sideNav i.closeMenuButton {
-  display: block;
-  font-size: 5rem;
-  float: right;
-  background-color: white;
+  font-size: 0.5em;
+}
+header nav#sideNav i.closeMenuButton i.fa-times {
+  color: white;
 }
 header nav#sideNav i.closeMenuButton:hover, header nav#sideNav i.closeMenuButton:active {
   color: #ef4e49;
+}
+header nav#sideNav input#sideNavSearch {
+  display: inline-block;
+  float: left;
+  clear: both;
+  width: calc(100% - 6rem);
+  font-size: 2rem;
+  padding: 0 1em;
+}
+header nav#sideNav i.searchButton {
+  display: inline-block;
+  float: left;
+  font-size: 2rem;
+  width: 6rem;
+  text-align: center;
+}
+header nav#sideNav i.searchButton:hover, header nav#sideNav input#sideNavSearch:hover {
+  background-color: #e9e9e9;
 }
 header nav#sideNav a {
   display: block;
   font-size: 2rem;
   padding: 0 1em;
+  clear: both;
 }
 header nav#sideNav a:active, header nav#sideNav a:hover {
   background-color: #e9e9e9;

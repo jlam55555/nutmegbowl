@@ -1,0 +1,30 @@
+---
+layout: default
+title: Search Results
+---
+
+<h1>Search Results</h1>
+<h2>"<span id="searchTerm"></span>"</h2>
+<div id="searchResults"></div>
+<script>
+  (function() {
+    var searchTerm = $("span#searchTerm");
+    var searchResults = $("div#searchResults");
+    var query = decodeURIComponent(/q=(.+)$/.exec(window.location.href)[1]).toLowerCase();
+    var searchResultsString = "";
+    $.getJSON("res/search.json", function(data) {
+      for(page in data) {
+        if(data[page].title.toLowerCase() == query)
+          window.location.href = data[page].url;
+        if(data[page].url.indexOf("index") > 0)
+          continue;
+        if(data[page].string.toLowerCase().indexOf(query) > 0) {
+          data[page].string = data[page].string.replace(new RegExp(query, "ig"), "<span style='color:red'>" + query + "</span>");
+          searchResultsString += "<a href='" + data[page].url + "'>" + data[page].title + "</a>" + " " + data[page].string + "<br><br />";
+        }
+      }
+      searchTerm.text(query);
+      searchResults.html(searchResultsString);
+    });
+  })();
+</script>

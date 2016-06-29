@@ -17,9 +17,10 @@ $(function() {
     googlePlusShareButton: $("#googlePlusShareButton"),
     revealButton: $(".revealButton"),
     categoryListItem: $(".categoryListItem"),
-    standingsList: $("#standingsList"),
     titleImage: $(".titleImage"),
     sideNav: $("#sideNav"),
+    sideNavSearch: $("#sideNavSearch"),
+    searchButton: $(".searchButton"),
     menuButtons: $(".closeMenuButton, .openMenuButton")
   };
   
@@ -48,7 +49,7 @@ $(function() {
       }
     }
     // resize size of #sideNav links for mobile
-    e.sideNav.children().css({ height: Math.ceil(e.window.height()/6), lineHeight: Math.ceil(e.window.height()/6) + "px" });
+    e.sideNav.children().css({ height: Math.ceil(e.window.height()/8), lineHeight: Math.ceil(e.window.height()/8) + "px" });
   });
   // dropdown code
   e.dropdown.each(function() {
@@ -97,15 +98,6 @@ $(function() {
   e.categoryListItem.click(function() {
     window.location.href = $(this).data("href");
   });
-  // league standings for standings.html page
-  if(e.standingsList.length == 1)
-    $.getJSON("leagues/league_standings.json", function(data) {
-      var standings = "";
-      for(var league in data) {
-        standings += "<li><a href='" + data[league] + "' target='_blank'>" + league +"</a></li>";
-      }
-      e.standingsList.html(standings);
-    });
   // set footer margin top (0 if homepage)
   if(e.shoutButton.length > 0)
     e.footer.css({ marginTop: 0 }); 
@@ -113,8 +105,20 @@ $(function() {
   e.menuButtons.click(function() {
     e.sideNav.slideToggle();
   });
+  // search capability
+  e.sideNavSearch.keyup(function(event) {
+    if(event.which == 13)
+      e.searchButton.click();
+  });
+  e.searchButton.click(function() {
+    if(e.sideNavSearch.val().trim() != "")
+      window.location.href = "search/?q=" + encodeURIComponent(e.sideNavSearch.val().trim());
+  });
 
   // resize the page
   e.window.resize();
-
+  // resize a little later
+  setTimeout(function() {
+    e.window.resize();
+  }, 100);
 });
