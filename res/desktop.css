@@ -90,6 +90,12 @@ div.shoutBox {
   width: calc(100% + 12.5em);
   margin-left: -6.25em;
 }
+div.shoutBox div.shoutText h1 {
+  font-size: 3em !important;
+}
+div.shoutBox div.shoutText p {
+  font-size: 1.5em;
+}
 /* listing page styles */
 div.categoryListItem i.icon {
   font-size: 6.25rem;
