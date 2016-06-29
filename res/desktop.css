@@ -88,6 +88,7 @@ header nav#mainNav a.dropdownLink:hover {
 /* index.html page styles */
 div.shoutBox {
   width: calc(100% + 12.5em);
+  height: 67.5em;
   margin-left: -6.25em;
 }
 div.shoutBox div.shoutText h1 {
