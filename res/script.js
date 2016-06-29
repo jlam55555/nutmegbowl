@@ -4,6 +4,7 @@ $(function() {
   var e = {
     document: $(document),
     window: $(window),
+    html: $("html"),
     body: $("body"),
     footer: $("footer"),
     header: $("header"),
@@ -44,6 +45,8 @@ $(function() {
         e.triangle = $(".triangle").css({ borderWidth: "1.5625em " + (e.window.width()/2+2) + "px" });
       }
     }
+    // resize font size if too small
+    e.html.css({ fontSize: (e.window.width() > 750) ? "1em" : "2vw" });
   });
   // dropdown code
   e.dropdown.each(function() {
