@@ -85,6 +85,10 @@ header nav#mainNav a.dropdownLink {
 header nav#mainNav a.dropdownLink:hover {
   background-color: #57797f;
 }
+div.titleImage {
+  width: calc(100% + 12.5em);
+  margin-left: -6.25em;
+}
 /* index.html page styles */
 div.shoutBox {
   width: calc(100% + 12.5em);

@@ -285,8 +285,8 @@ blockquote.review:nth-child(even) {
   transform: rotate(2.5deg);
 }
 div.titleImage {
-  width: calc(100% + 12.5em); 
-  margin-left: -6.25em;
+  width: calc(100% + 1em); 
+  margin-left: -0.5em;
   height: 31.25em;
   background-position: center center;
   background-size: cover;

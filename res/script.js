@@ -41,10 +41,10 @@ $(function() {
         $("h1:not(#title)").first().after(e.titleImage); 
       }
       if(e.hasOwnProperty("triangle")) {
-        e.triangle.css({ borderWidth: "1.5625em " + (e.window.width()/2+2) + "px" });
+        e.triangle.css({ borderWidth: "1.6em " + (e.window.width()/2+2) + "px" });
       } else {
         e.titleImage.append($("<div class='triangle'></div><div class='triangle'></div>"));
-        e.triangle = $(".triangle").css({ borderWidth: "1.5625em " + (e.window.width()/2+2) + "px" });
+        e.triangle = $(".triangle").css({ borderWidth: "1.6em " + (e.window.width()/2+2) + "px" });
       }
     }
     // resize size of #sideNav links for mobile
