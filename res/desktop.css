@@ -7,7 +7,6 @@ html {
 }
 
 /* more specific styles */
-/* for debugging purposes: remove when done */
 footer {
   width: calc(100% + 12.5em);
   margin-left: -6.25em;
@@ -22,10 +21,6 @@ footer > h2:nth-of-type(2) {
 footer div#copyrightNotice {
   margin-top: 3.125em;
   text-align: center;
-}
-h1:not(#title)::after {
-  font-size: 0.5em;
-  content: " [ Desktop ]";
 }
 header {
   display: block;
@@ -89,4 +84,27 @@ header nav#mainNav a.dropdownLink {
 }
 header nav#mainNav a.dropdownLink:hover {
   background-color: #57797f;
+}
+/* index.html page styles */
+div.shoutBox {
+  width: calc(100% + 12.5em);
+  margin-left: -6.25em;
+}
+/* listing page styles */
+div.categoryListItem i.icon {
+  font-size: 6.25rem;
+  line-height: 9.375rem;
+  margin: 0 1.5rem;
+}
+div.categoryListItem h3.title {
+  font-size: 1.75rem;
+  height: 6.25rem;
+  line-height: 6.25rem;
+  margin: 0;
+}
+div.categoryListItem p.description {
+  font-size: 1.25rem;
+  margin: 0;
+  line-height: 1.5625rem;
+  height: 1.5625rem;
 }

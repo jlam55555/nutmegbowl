@@ -310,8 +310,8 @@ div.titleImage div.triangle:last-of-type {
 }
 /* index.html styles */
 div.shoutBox {
-  width: calc(100% + 12.5em);
-  margin-left: -6.25em;
+  width: calc(100% + 1em);
+  margin-left: -0.5em;
   position: relative;
 }
 div.shoutBox img.shoutImage {
@@ -329,15 +329,14 @@ div.shoutBox div.imageCover {
 div.shoutBox div.shoutText {
   position: absolute;
   height: 12.5em;
-  width: 75%;
+  width: 85%;
   top: calc(50% - 6.25em);
-  margin: 0 12.5%;
+  margin: 0 7.5%;
   text-align: center;
 }
 div.shoutBox div.shoutText h1 {
-  font-size: 3.125em;
-  font-family: shout;
-  margin: 0 0 1.5rem 0;
+  font-size: 2em !important;
+  margin: 0 0 1rem 0 !important;
 }
 div.shoutBox div.shoutText p {
   font-size: 1.25em;
@@ -365,19 +364,26 @@ div.categoryListItem:hover {
 }
 div.categoryListItem i.icon {
   display: inline-block;
-  font-size: 6.25rem;
-  line-height: 9.375rem;
-  margin: 0 1.5rem;
+  font-size: 3.125rem;
+  line-height: 6.25rem;
+  margin: 0 1.5625rem 0 0;
 }
 div.categoryListItem div.info {
   display: inline-block;
-  height: 9.375rem;
+  height: 6.25rem;
+  vertical-align: top;
 }
 div.categoryListItem h3.title {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  line-height: 3.125rem;
+  height: 3.125rem;
+  margin: 0;
 }
 div.categoryListItem p.description {
-  font-size: 1.25rem;
+  line-height: 3.125rem;
+  height: 3.125rem;
+  font-size: 1rem;
+  margin: 0;
 }
 /* contact/staff.html styles */
 div.staff {
