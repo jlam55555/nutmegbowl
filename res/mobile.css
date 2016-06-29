@@ -311,7 +311,7 @@ div.titleImage div.triangle:last-of-type {
 /* index.html styles */
 div.shoutBox {
   width: calc(100% + 1em);
-  height: 31.25em;
+  height: 67.5em;
   background-size: cover;
   background-position: center center;
   margin-left: -0.5em;
@@ -394,6 +394,7 @@ div.staff {
 div.staff img.picture {
   width: 16.675em;
   height: 16.675em;
+  display: block;
 }
 div.staff div.info {
   width: 16.675em;
