@@ -1,0 +1,11 @@
+/* general tag styles */
+html {
+  font-size: 1em;
+}
+
+/* more specific styles */
+/* for debugging purposes: remove when done */
+h1:not(#title)::after {
+  font-size: 0.5em;
+  content: " [ Desktop ]";
+}
