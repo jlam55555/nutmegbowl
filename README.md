@@ -22,3 +22,8 @@ A modern remake of the [official website for Nutmeg Bowl](http://www.nutmegbowl.
 (screenshot date: 6/24/16; page: homepage)
 
 ![screenshot](http://i.imgur.com/6G4x2AU.jpg)
+
+#### The Future
+Most probable future updates:
+- Search capability
+- News page
