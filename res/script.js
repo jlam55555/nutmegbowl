@@ -29,8 +29,10 @@ $(function() {
   // reposition the footer
   var docWidth, docHeight;
   e.window.resize(function() {
+    // resize font size if too small
+    e.html.css({ fontSize: (e.window.width() > 750) ? "1em" : "2vw" });
     var extraPadding = e.shoutButton.length > 0 ? 0 : 50;
-    e.body.css({ paddingTop: e.header.height() + e.mainNav.height() });
+    e.body.css({ paddingTop: Math.floor(e.header.height() + e.mainNav.height()) });
     docWidth = e.document.width() > e.window.width() ? e.document.width() : e.window.width();
     docHeight = e.document.height() > e.window.height() ? e.document.height() : e.window.height();
     // resize triangular part if applicable
@@ -45,8 +47,6 @@ $(function() {
         e.triangle = $(".triangle").css({ borderWidth: "1.5625em " + (e.window.width()/2+2) + "px" });
       }
     }
-    // resize font size if too small
-    e.html.css({ fontSize: (e.window.width() > 750) ? "1em" : "2vw" });
   });
   // dropdown code
   e.dropdown.each(function() {
