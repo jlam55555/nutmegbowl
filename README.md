@@ -4,7 +4,7 @@ A clean version of the website for Nutmeg Bowl
 #### See it at [jlam55555.github.io/nutmegbowl](http://jlam55555.github.io/nutmegbowl/)
 
 #### Purpose
-A modern remake of the [official website for Nutmeg Bowl](http://www.nutmegbowl.com). Currently awaiting official approval.
+A modern redo of the [official website for Nutmeg Bowl](http://www.nutmegbowl.com). Currently in pure development state, soon to be proposed to current webmaster.
 
 #### Features
 - Modern UI with flat design
@@ -14,6 +14,8 @@ A modern remake of the [official website for Nutmeg Bowl](http://www.nutmegbowl.
 - Animations and interactive material for more user engagement
 - Larger, more colorful photos to enhance to experience
 - All the information from the older website, and more
+- Search capability
+- Mobile site with full functionality
 
 #### Bugs
 - See [Website Information page](http://jlam55555.github.io/nutmegbowl/contact/website_information/) on website for known bugs.
@@ -25,5 +27,5 @@ A modern remake of the [official website for Nutmeg Bowl](http://www.nutmegbowl.
 
 #### The Future
 Most probable future updates:
-- Search capability
 - News page
+- Easy upload script for league standings
