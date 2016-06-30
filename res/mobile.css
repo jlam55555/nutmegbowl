@@ -441,6 +441,49 @@ div.info div.title {
   line-height: 1.5rem;
   text-align: center;
 }
+/* search.html styles */
+div#searchPageSearch {
+  font-size: 1.5rem;
+  margin: 1em 0;
+  overflow: hidden;
+  box-shadow: 0 0 1px 1px #e9e9e9;
+}
+div#searchPageSearch.shadow {
+  box-shadow: 0 0 3px 3px #e9e9e9;
+}
+div#searchPageSearch i.searchIcon, div#searchPageSearch input#searchSearch {
+  padding: 1em;
+}
+div#searchPageSearch input#searchSearch {
+  width: calc(100% - 3em);
+  float: left;
+}
+div#searchPageSearch i.searchIcon {
+  background-color: #e9e9e9;
+  width: 3em;
+  padding: 1.2em 1em;
+  float: left;
+  text-align: center;
+}
+div.searchPageMatch {
+  background-color: #e9e9e9;
+  padding: 1em;
+  margin: 1em 0;
+}
+div.searchPageMatch:hover {
+  background-color: #cdcdcd;
+}
+div.searchPageMatch h3.searchPageTitle {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+div.searchPageMatch div.searchPageResult {
+  margin-bottom: 0.5em;
+}
+div.searchPageMatch span.searchMatch {
+  background-color: #ffff88;
+  padding: 0.2em 0.5em;
+}
 
 /* general classes */
 .animate {

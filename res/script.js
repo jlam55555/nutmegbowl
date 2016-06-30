@@ -4,8 +4,7 @@ $(function() {
   var e = {
     document: $(document),
     window: $(window),
-    html: $("html"),
-    body: $("body"),
+    html: $("html"), body: $("body"),
     footer: $("footer"),
     header: $("header"),
     shoutButton: $(".shoutButton"),
@@ -21,7 +20,11 @@ $(function() {
     sideNav: $("#sideNav"),
     sideNavSearch: $("#sideNavSearch"),
     searchButton: $(".searchButton"),
-    menuButtons: $(".closeMenuButton, .openMenuButton")
+    menuButtons: $(".closeMenuButton, .openMenuButton"),
+    searchTerm: $("#searchTerm"),
+    searchResults: $("#searchResults"),
+    searchSearch: $("#searchSearch"),
+    searchIcon: $(".searchIcon")
   };
   
   // accessory functions
@@ -112,8 +115,53 @@ $(function() {
   });
   e.searchButton.click(function() {
     if(e.sideNavSearch.val().trim() != "")
-      window.location.href = "search/?q=" + encodeURIComponent(e.sideNavSearch.val().trim());
+      window.location.href = "search/?" + encodeURIComponent(e.sideNavSearch.val().trim());
   });
+  // search function
+  if(e.searchTerm.length == 1) {
+    var query = decodeURIComponent(/\?(.+)$/.exec(window.location.href)[1]).toLowerCase();
+    var searchResultsString = "";
+    $.getJSON("res/search.json", function(data) {
+      for(page in data) {
+        if(data[page].title.toLowerCase() == query)
+          window.location.href = data[page].url;
+        if(data[page].url.indexOf("index") > 0)
+          continue;
+        var pageString = data[page].string;
+        var stringAround = "";
+        if(pageString.toLowerCase().indexOf(query) > 0) {
+          var regex = new RegExp(query, "ig");
+          var match;
+          var length = query.length;
+          while(match = regex.exec(pageString)) {
+            var start = (match.index-25 < 0) ? 0 : match.index-25;
+            var end = (match.index+length+25 > pageString.length) ? pageString.length : match.index+length+25;
+            stringAround += "<div class='searchPageResult'>" + pageString.substring(start, match.index) + "<span class='searchMatch rounded'>" + match[0] + "</span>" + pageString.substring(match.index+length, end);
+            stringAround += "</div>";
+          }
+          searchResultsString += "<div class='searchPageMatch animate rounded pointer' data-href='" + data[page].url + "'><h3 class='searchPageTitle'>" + data[page].title + "</h3>" + stringAround + "</div>";
+        }
+      }
+      e.searchTerm.text(query);
+      e.searchResults.html(searchResultsString);
+    });
+    e.document.on("click", ".searchPageMatch", function() {
+      window.location.href = $(this).data("href");
+    });
+    e.searchSearch.click(function() {
+      $(this).parent().addClass("shadow");
+    });
+    e.searchSearch.blur(function() {
+      $(this).parent().removeClass("shadow");
+    });
+    e.searchSearch.keyup(function(event) {
+      if(event.which == 13)
+        e.searchIcon.click();
+    });
+    e.searchIcon.click(function() {
+      window.location.href = "search/?" + encodeURIComponent(e.searchSearch.val());
+    });
+  }
 
   // resize the page
   e.window.resize();
