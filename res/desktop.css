@@ -56,14 +56,28 @@ header nav#mainNav.fixed {
   top: 0;
   left: 0;
 }
-header nav#mainNav div.dropdown {
+header nav#mainNav div.dropdown, header nav#mainNav i.mainSearchIcon, header nav#mainNav input#mainSearch {
   display: inline-block;
   padding: 1.25rem;
   background-color: #57797f;
   color: white;
   font-size: 1rem;
 }
-header nav#mainNav div.dropdown:hover, header nav#mainNav div.dropdown.linger {
+header nav#mainNav i.mainSearchIcon {
+  vertical-align: top;
+}
+header nav#mainNav i.mainSearchIcon.active {
+  background-color: #2c3c40;
+}
+header nav#mainNav i.mainSearchIcon.active:hover {
+  color: #57797f;
+}
+header nav#mainNav input#mainSearch.hidden, header nav#mainNav div.dropdown.hidden {
+  padding: 1.25rem 0 !important;
+  width: 0px !important;
+  font-size: 0;
+}
+header nav#mainNav div.dropdown:hover, header nav#mainNav div.dropdown.linger, header nav#mainNav i.mainSearchIcon:hover, header nav#mainNav input#mainSearch:hover, header nav#mainNav input#mainSearch:focus {
   background-color: #2c3c40;
 } 
 header nav#mainNav div.dropdownLinks {

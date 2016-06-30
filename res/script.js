@@ -24,17 +24,23 @@ $(function() {
     searchTerm: $("#searchTerm"),
     searchResults: $("#searchResults"),
     searchSearch: $("#searchSearch"),
-    searchIcon: $(".searchIcon")
+    searchIcon: $(".searchIcon"),
+    mainSearchIcon: $(".mainSearchIcon"),
+    mainSearch: $("#mainSearch")
   };
   
   // accessory functions
   var getPxValue = function(input) {
     return parseInt(input.substring(0, input.length-2));
   };
+  var search = function(input) {
+    if(input.trim() != "")
+      window.location.href = "search/?" + encodeURIComponent(input);
+  };
 
   // reposition the footer
   var docWidth, docHeight;
-  e.window.resize(function() {
+  var resizeFunction = function() {
     var extraPadding = e.shoutButton.length > 0 ? 0 : 50;
     e.body.css({ paddingTop: Math.floor(e.header.height() + e.mainNav.height()) });
     docWidth = e.document.width() > e.window.width() ? e.document.width() : e.window.width();
@@ -53,7 +59,12 @@ $(function() {
     }
     // resize size of #sideNav links for mobile
     e.sideNav.children().css({ height: Math.ceil(e.window.height()/8), lineHeight: Math.ceil(e.window.height()/8) + "px" });
-  });
+    // make main search bar full width 
+    e.mainSearch.innerWidth(e.window.width() - e.mainSearchIcon.innerWidth());
+    // resize search icon
+    e.mainSearchIcon.css({ height: e.dropdown.innerHeight() || e.mainSearch.innerHeight() });
+
+  };
   // dropdown code
   e.dropdown.each(function() {
     var thisElement = $(this), dropdown = $("#dropdown" + thisElement.data("dropdown"));
@@ -114,37 +125,42 @@ $(function() {
       e.searchButton.click();
   });
   e.searchButton.click(function() {
-    if(e.sideNavSearch.val().trim() != "")
-      window.location.href = "search/?" + encodeURIComponent(e.sideNavSearch.val().trim());
+    search(e.sideNavSearch.val());
   });
   // search function
   if(e.searchTerm.length == 1) {
-    var query = decodeURIComponent(/\?(.+)$/.exec(window.location.href)[1]).toLowerCase();
-    var searchResultsString = "";
-    $.getJSON("res/search.json", function(data) {
-      for(page in data) {
-        if(data[page].title.toLowerCase() == query)
-          window.location.href = data[page].url;
-        if(data[page].url.indexOf("index") > 0)
-          continue;
-        var pageString = data[page].string;
-        var stringAround = "";
-        if(pageString.toLowerCase().indexOf(query) > 0) {
-          var regex = new RegExp(query, "ig");
-          var match;
-          var length = query.length;
-          while(match = regex.exec(pageString)) {
-            var start = (match.index-25 < 0) ? 0 : match.index-25;
-            var end = (match.index+length+25 > pageString.length) ? pageString.length : match.index+length+25;
-            stringAround += "<div class='searchPageResult'>" + pageString.substring(start, match.index) + "<span class='searchMatch rounded'>" + match[0] + "</span>" + pageString.substring(match.index+length, end);
-            stringAround += "</div>";
+    var urlParameter = /\?(.+)$/.exec(window.location.href);
+    if(urlParameter) {
+      var query = decodeURIComponent(urlParameter[1]).toLowerCase() || false;
+      var searchResultsString = "";
+      $.getJSON("res/search.json", function(data) {
+        for(page in data) {
+          if(data[page].title.toLowerCase() == query)
+            window.location.href = data[page].url;
+          if(data[page].url.indexOf("index") > 0 || data[page].title == "Search")
+            continue;
+          var pageString = data[page].string;
+          var stringAround = "";
+          if(pageString.toLowerCase().indexOf(query) > 0) {
+            var regex = new RegExp(query, "ig");
+            var match;
+            var length = query.length;
+            while(match = regex.exec(pageString)) {
+              var start = (match.index-25 < 0) ? 0 : match.index-25;
+              var end = (match.index+length+25 > pageString.length) ? pageString.length : match.index+length+25;
+              stringAround += "<div class='searchPageResult'>" + pageString.substring(start, match.index) + "<span class='searchMatch rounded'>" + match[0] + "</span>" + pageString.substring(match.index+length, end);
+              stringAround += "</div>";
+            }
+            searchResultsString += "<div class='searchPageMatch animate rounded pointer' data-href='" + data[page].url + "'><h3 class='searchPageTitle'>" + data[page].title + "</h3>" + stringAround + "</div>";
           }
-          searchResultsString += "<div class='searchPageMatch animate rounded pointer' data-href='" + data[page].url + "'><h3 class='searchPageTitle'>" + data[page].title + "</h3>" + stringAround + "</div>";
         }
-      }
-      e.searchTerm.text(query);
-      e.searchResults.html(searchResultsString);
-    });
+        e.searchTerm.text(query);
+        e.searchResults.html(searchResultsString || "<p>No matches found.</p>");
+      });
+    } else {
+      e.searchTerm.text(" ");
+      e.searchResults.html("<p>Please enter search terms to perform a search.</p>");
+    }
     e.document.on("click", ".searchPageMatch", function() {
       window.location.href = $(this).data("href");
     });
@@ -159,14 +175,33 @@ $(function() {
         e.searchIcon.click();
     });
     e.searchIcon.click(function() {
-      window.location.href = "search/?" + encodeURIComponent(e.searchSearch.val());
+      search(e.searchSearch.val());
     });
   }
+  // desktop search tools
+  e.mainSearchIcon.click(function() {
+    search(e.mainSearch.val());
+    if(e.mainSearch.hasClass("hidden")) {
+      e.mainSearch.focus();
+      e.mainSearch.removeClass("hidden");
+    } else {
+      e.mainSearch.addClass("hidden");
+    }
+    e.mainSearchIcon.toggleClass("active");
+    e.dropdown.toggleClass("hidden");
+  });
+  e.mainSearch.blur(function() {
+    e.mainSearchIcon.click();
+  });
+  e.mainSearch.keyup(function(event) {
+    if(event.which == 13)
+      e.mainSearchIcon.click();
+  });
 
   // resize the page
-  e.window.resize();
+  e.window.resize(resizeFunction).resize();
   // resize a little later
   setTimeout(function() {
     e.window.resize();
-  }, 100);
+  }, 200);
 });
