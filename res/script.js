@@ -185,16 +185,14 @@ $(function() {
       e.mainSearch.focus();
       e.mainSearch.removeClass("hidden");
     } else {
+      e.mainSearch.blur();
       e.mainSearch.addClass("hidden");
     }
     e.mainSearchIcon.toggleClass("active");
     e.dropdown.toggleClass("hidden");
   });
-  e.mainSearch.blur(function() {
-    e.mainSearchIcon.click();
-  });
   e.mainSearch.keyup(function(event) {
-    if(event.which == 13)
+    if(event.which == 13 || $(this).val() == "")
       e.mainSearchIcon.click();
   });
 
