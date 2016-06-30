@@ -176,7 +176,7 @@ header nav#mainNav div.mobile i.openMenuButton:hover i.fa-square, header nav#mai
 header nav#mainNav div.mobile i.fa-navicon {
   color: #57797f;
 }
-header nav#mainNav div.dropdown, nav#mainNav div.dropdownLinks {
+header nav#mainNav div.dropdown, header nav#mainNav div.dropdownLinks, header nav#mainNav input#mainSearch, header nav#mainNav i.mainSearchIcon {
   display: none;
 }
 header nav#sideNav {
