@@ -2,15 +2,8 @@
 ---
 /* double-triple-dash to show jekyll this is sass */
 
-/* theme colors */
-$main:    #57797f
-$dark:    #2c3c40
-$bright:  #e9e9e9
-$light:   #cdcdcd
-/* other colors */
-$red:     #ef4e49
-$green:   #27ae60
-$yellow:  #ffff88
+@import colors
+@import classes
 
 /* non-default fonts */
 @font-face
@@ -24,25 +17,6 @@ $yellow:  #ffff88
   font-family: body
   src: url(./fonts/cloudBold.otf)
   font-weight: bold
-
-/* generic classes */
-.animate
-  transition: all .5s
-.clearFix::after
-  content: " "
-  display: table
-  clear: both
-.noStyle
-  border-bottom: none
-  color: inherit
-.pointer
-  cursor: pointer
-.rounded
-  border-radius: 3px
-.shadowHover:hover
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 3px 3px
-.shadow
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 3px 3px
 
 /* general tag styles */
 *
@@ -136,8 +110,10 @@ footer
   > .shareBox
     text-align: center
     margin-bottom: 1.5rem
-    > a
+    > .shareButtonLink
+      @extend .noStyle
       > .shareButton
+        @extend .pointer, .animate
         font-size: 3.125em
         margin: 0 1.5rem
       > .shareButton.fa-facebook:hover
@@ -164,11 +140,14 @@ header
       font-family: shout
       font-size: 4em
       > .openMenuButton
+        @extend .pointer
         font-size: 0.5em
-      > .openMenuButton:hover .fa-square, .openMenuButton:active .fa-square
-        color: $bright
+        &:hover .fa-square, &:active .fa-square
+          color: $bright
       .fa-navicon
         color: $main
+      > a
+        @extend .noStyle
     > .dropdown, .dropdownLinks, #mainSearch, .mainSearchIcon
       display: none
   > #sideNav
@@ -188,6 +167,7 @@ header
       font-family: shout
       line-height: 4.4rem !important
       > .closeMenuButton
+        @extend .pointer
         font-size: 0.5em
         > .fa-times
           color: white
@@ -203,6 +183,7 @@ header
       &:hover
         background-color: $bright
     > .searchButton
+      @extend .pointer
       display: inline-block
       float: left
       font-size: 2rem
@@ -211,6 +192,7 @@ header
       &:hover
         background-color: $bright
     > a
+      @extend .noStyle
       display: block
       font-size: 2rem
       padding: 0 1em
@@ -342,6 +324,7 @@ h1:not(#title)
 
 /* styles for a listing page */
 .categoryListItem
+  @extend .animate, .rounded, .pointer
   margin: 1em 0
   background-color: $bright
   padding: 1.5rem

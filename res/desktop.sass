@@ -2,15 +2,8 @@
 ---
 /* double-triple-dashes to show to jekyll that this is sass */
 
-/* theme colors */
-$main:    #57797f
-$dark:    #2c3c40
-$bright:  #e9e9e9
-$light:   #cdcdcd
-/* other colors */
-$red:     #ef4e49
-$green:   #27ae60
-$yellow:  #ffff88
+@import colors
+@import classes
 
 /* general tag styles */
 body
@@ -49,6 +42,8 @@ header
     line-height: 9.375rem
     color: white
     display: block
+    > a
+      @extend .noStyle
   > #mainNav
     position: relative
     font-size: 0
@@ -58,6 +53,13 @@ header
       position: fixed
       top: 0
       left: 0
+    > .dropdown
+      @extend .pointer
+      &::after
+        font-family: fontawesome
+        content: " \f0d7"
+      > a
+        @extend .noStyle
     > .dropdown, .mainSearchIcon, #mainSearch
       display: inline-block
       padding: 1.25rem
@@ -65,6 +67,7 @@ header
       color: white
       font-size: 1rem
     > .mainSearchIcon
+      @extend .pointer
       vertical-align: top
       &.active
         background-color: $dark
@@ -87,6 +90,7 @@ header
       &.hidden
         display: none
     .dropdownLink
+      @extend .noStyle
       display: block
       padding: 0.625em 1.25em
       &:hover
@@ -114,13 +118,14 @@ header
     font-size: 6.25rem
     line-height: 9.375rem
     margin: 0 1.5rem
-  > .title
-    font-size: 1.75rem
-    height: 6.25rem
-    line-height: 6.25rem
-    margin: 0
-  > .description
-    font-size: 1.25rem
-    margin: 0
-    line-height: 1.5625rem
-    height: 1.5625rem
+  > .info
+    > .title
+      font-size: 1.75rem
+      height: 6.25rem
+      line-height: 6.25rem
+      margin: 0
+    > .description
+      font-size: 1.25rem
+      margin: 0
+      line-height: 1.5625rem
+      height: 1.5625rem
