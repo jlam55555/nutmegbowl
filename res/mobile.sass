@@ -25,6 +25,25 @@ $yellow:  #ffff88
   src: url(./fonts/cloudBold.otf)
   font-weight: bold
 
+/* generic classes */
+.animate
+  transition: all .5s
+.clearFix::after
+  content: " "
+  display: table
+  clear: both
+.noStyle
+  border-bottom: none
+  color: inherit
+.pointer
+  cursor: pointer
+.rounded
+  border-radius: 3px
+.shadowHover:hover
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 3px 3px
+.shadow
+  box-shadow: rgba(0, 0, 0, 0.2) 0 0 3px 3px
+
 /* general tag styles */
 *
   box-sizing: border-box
@@ -84,7 +103,7 @@ table
   width: 100%
   border-collapse: collapse
   empty-cells: show
-  > td, th
+  td, th
     padding: 0.625em 1.25em
   > thead
     > tr
@@ -207,13 +226,19 @@ header
     margin-right: 1.25rem
   > .fa-stack.second
     margin-left: 1.25rem
+  i:first-child
+    color: $red
+  i:last-child
+    color: white
 .reveal
+  @extend .rounded
   background-color: $bright
   margin: 1em 0
   > .toReveal
     padding: 1.25em
     display: none
   > .revealButton
+    @extend .animate, .pointer
     padding: 1.25em
     &::after
       content: "\f0d7"
@@ -251,6 +276,7 @@ h1:not(#title)
       > .fa-times
         color: $red
 .review
+  @extend .rounded
   margin: 3.125em
   &:nth-child(odd)
     transform: rotate(-2.5deg)
@@ -304,6 +330,7 @@ h1:not(#title)
       font-size: 1.25em
       margin: 0
     > button
+      @extend .pointer, .shadowHover, .rounded
       background-color: $dark
       color: $bright
       font-family: shout
@@ -342,6 +369,7 @@ h1:not(#title)
 
 /* contact/staff.html styles */
 .staff
+  @extend .rounded, .shadow
   margin: 1em 2em 1em 0
   background-color: $bright
   width: 16.675em
@@ -399,26 +427,3 @@ h1:not(#title)
 .searchPageMatch .searchMatch
   background-color: $yellow
   padding: 0.2em 0.5em
-
-/* general classes */
-.animate
-  transition: all .5s
-.clearFix::after
-  content: " "
-  display: table
-  clear: both
-.dangerText
-  color: $red
-.noStyle
-  border-bottom: none
-  color: inherit
-.pointer
-  cursor: pointer
-.rounded
-  border-radius: 3px
-.shadowHover:hover
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 3px 3px
-.shadow
-  box-shadow: rgba(0, 0, 0, 0.2) 0 0 3px 3px
-.lightText
-  color: white
