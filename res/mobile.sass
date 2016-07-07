@@ -1,9 +1,16 @@
 ---
 ---
-
 /* double-triple-dash to show jekyll this is sass */
 
-/* #2c3c40 #57797f #e9e9e9 #cdcdcd */
+/* theme colors */
+$main:    #57797f
+$dark:    #2c3c40
+$bright:  #e9e9e9
+$light:   #cdcdcd
+/* other colors */
+$red:     #ef4e49
+$green:   #27ae60
+$yellow:  #ffff88
 
 /* non-default fonts */
 @font-face
@@ -22,13 +29,13 @@
 *
   box-sizing: border-box
 a
-  color: #57797f
+  color: $main
   text-decoration: none
-  border-bottom: 1px dotted #57797f
+  border-bottom: 1px dotted $main
 blockquote
   margin: 1.25em 2.5em 1.25em 1.25em
   padding: 1.25em 2.5em 2.5em 1.25em
-  background-color: #e9e9e9
+  background-color: $bright
   font-size: 1.25rem
   &::before
     content: "\f10d"
@@ -39,7 +46,7 @@ blockquote
     width: 1em
     height: 1em
     margin-right: 0.5em
-  > span.author
+  > .author
     float: right
     margin-top: 1em
     font-size: 0.6em
@@ -58,7 +65,7 @@ h1, h2, h3, h4, h5, h6
   font-family: shout
   font-weight: normal
 h2
-  border-top: 1px solid #2c3c40
+  border-top: 1px solid $dark
   padding-top: 0.625em
   margin: 1.5em 0 0 0
 html
@@ -66,7 +73,7 @@ html
   font-size: 0.75em
   font-family: body
   background-color: white
-  color: #2c3c40
+  color: $dark
 li
   margin: 1em 0
   padding: 0 1em
@@ -81,13 +88,13 @@ table
     padding: 0.625em 1.25em
   > thead
     > tr
-      border-bottom: 3px solid #cdcdcd
+      border-bottom: 3px solid $light
       text-align: left
   > tbody
     > tr
-      border-top: 1px solid #cdcdcd
+      border-top: 1px solid $light
     > tr:nth-child(odd)
-      background-color: #e9e9e9
+      background-color: $bright
 ul
   list-style-type: circle
 
@@ -96,18 +103,18 @@ footer
   width: calc(100% + 1em)
   padding: 3.125em
   margin: 3.125em 0 0 -0.5em
-  background-color: #2c3c40
+  background-color: $dark
   color: white
   position: static
   left: 0
   a
-    color: #aff1ff
-    border-bottom-color: #aff1ff
+    color: $light
+    border-bottom-color: $light
   > div
     margin: 0.625em 0
   > h2
     margin: 0
-  > div.shareBox
+  > .shareBox
     text-align: center
     margin-bottom: 1.5rem
     > a
@@ -120,32 +127,32 @@ footer
         color: #55acee
       > .shareButton.fa-google-plus:hover
         color: #dd4b39
-  > div#copyrightNotice
+  > #copyrightNotice
     margin-top: 1.5rem
 header
-  img#logo, h1#title
+  #logo, #title
     display: none
-  > nav#mainNav
+  > #mainNav
     width: 100%
     position: fixed
     top: 0
     left: 0
     z-index: 5
-    background-color: #57797f
+    background-color: $main
     color: white
-    > div.mobile
+    > .mobile
       padding: 0.2em
       font-family: shout
       font-size: 4em
-      > i.openMenuButton
+      > .openMenuButton
         font-size: 0.5em
-      > i.openMenuButton:hover i.fa-square, i.openMenuButton:active i.fa-square
-        color: #e9e9e9
-      i.fa-navicon
-        color: #57797f
-    > div.dropdown, div.dropdownLinks, input#mainSearch, i.mainSearchIcon
+      > .openMenuButton:hover .fa-square, .openMenuButton:active .fa-square
+        color: $bright
+      .fa-navicon
+        color: $main
+    > .dropdown, .dropdownLinks, #mainSearch, .mainSearchIcon
       display: none
-  > nav#sideNav
+  > #sideNav
     width: 100%
     height: 100%
     position: fixed
@@ -154,20 +161,20 @@ header
     bottom: 0
     background-color: white
     z-index: 6
-    > span#sideNavTitle
+    > #sideNavTitle
       float: left
       display: inline-block
       font-size: 4rem
       padding: 0.2em
       font-family: shout
       line-height: 4.4rem !important
-      > i.closeMenuButton
+      > .closeMenuButton
         font-size: 0.5em
-        > i.fa-times
+        > .fa-times
           color: white
         &:hover, &:active
-          color: #ef4e49
-    > input#sideNavSearch
+          color: $red
+    > #sideNavSearch
       display: inline-block
       float: left
       clear: both
@@ -175,38 +182,38 @@ header
       font-size: 2rem
       padding: 0 1em
       &:hover
-        background-color: #e9e9e9
-    > i.searchButton
+        background-color: $bright
+    > .searchButton
       display: inline-block
       float: left
       font-size: 2rem
       width: 6rem
       text-align: center
       &:hover
-        background-color: #e9e9e9
+        background-color: $bright
     > a
       display: block
       font-size: 2rem
       padding: 0 1em
       clear: both
       &:active, &:hover
-        background-color: #e9e9e9
-p.underConstruction
+        background-color: $bright
+.underConstruction
   font-family: shout
   font-size: 1.25em
   text-align: center
   padding: 6.25rem 0
-  > span.fa-stack.first
+  > .fa-stack.first
     margin-right: 1.25rem
-  > span.fa-stack.second
+  > .fa-stack.second
     margin-left: 1.25rem
-div.reveal
-  background-color: #e9e9e9
+.reveal
+  background-color: $bright
   margin: 1em 0
-  > div.toReveal
+  > .toReveal
     padding: 1.25em
     display: none
-  > div.revealButton
+  > .revealButton
     padding: 1.25em
     &::after
       content: "\f0d7"
@@ -214,49 +221,49 @@ div.reveal
       display: inline-block
       padding-left: 0.625em
     &:hover
-      background-color: #cdcdcd
+      background-color: $light
   &.revealed
-    > div.revealButton
-      background-color: #cdcdcd
+    > .revealButton
+      background-color: $light
       &:hover
-        background-color: #e9e9e9
+        background-color: $bright
       &::after
         content: "\f0d8"
 h1:not(#title)
   font-size: 3.125em
   padding-top: 1em
   margin: 0
-table.schedule
+.schedule
   th:nth-child(1)
     width: 7.75em
   th:nth-child(2), th:nth-child(4)
     width: 6.25em
   th:nth-child(3)
     width: 18.75em
-table#birthdayOptions
+#birthdayOptions
   > tbody
     th
       text-align: left
     td
       text-align: center
-      > i.fa-check
-        color: #27ae60
-      > i.fa-times
-        color: #c0392b
-blockquote.review
+      > .fa-check
+        color: $green
+      > .fa-times
+        color: $red
+.review
   margin: 3.125em
   &:nth-child(odd)
     transform: rotate(-2.5deg)
   &:nth-child(even)
     transform: rotate(2.5deg)
-div.titleImage
+.titleImage
   width: calc(100% + 1em) 
   margin-left: -0.5em
   height: 31.25em
   background-position: center center
   background-size: cover
   overflow: hidden
-  > div.triangle
+  > .triangle
     content: " "
     display: block
     width: 0
@@ -270,20 +277,20 @@ div.titleImage
       border-left-color: transparent
       border-top-color: transparent
 /* index.html styles */
-div.shoutBox
+.shoutBox
   width: calc(100% + 1em)
   height: 31.25em
   background-size: cover
   background-position: center center
   margin-left: -0.5em
   position: relative
-  > div.imageCover
+  > .imageCover
     height: 100%
     width: 100%
     position: absolute
     top: 0
     background-color: rgba(255, 255, 255, 0.5)
-  > div.shoutText
+  > .shoutText
     position: absolute
     height: 12.5em
     width: 85%
@@ -297,100 +304,100 @@ div.shoutBox
       font-size: 1.25em
       margin: 0
     > button
-      background-color: #2c3c40
-      color: #e9e9e9
+      background-color: $dark
+      color: $bright
       font-family: shout
       font-size: 1.25em
       margin-top: 1em
       padding: 0.5em 2em
       &:active
-        background-color: #57797f
+        background-color: $main
 
 /* styles for a listing page */
-div.categoryListItem
+.categoryListItem
   margin: 1em 0
-  background-color: #e9e9e9
+  background-color: $bright
   padding: 1.5rem
   &:hover
-    background-color: #cdcdcd
-  > i.icon
+    background-color: $light
+  > .icon
     display: inline-block
     font-size: 3.125rem
     line-height: 6.25rem
     margin: 0 1.5625rem 0 0
-  > div.info
+  > .info
     display: inline-block
     height: 6.25rem
     vertical-align: top
-  > h3.title
+  > .title
     font-size: 1.5rem
     line-height: 3.125rem
     height: 3.125rem
     margin: 0
-  > p.description
+  > .description
     line-height: 3.125rem
     height: 3.125rem
     font-size: 1rem
     margin: 0
 
 /* contact/staff.html styles */
-div.staff
+.staff
   margin: 1em 2em 1em 0
-  background-color: #e9e9e9
+  background-color: $bright
   width: 16.675em
   height: 23.4375em
   display: inline-block
-  > img.picture
+  > .picture
     width: 16.675em
     height: 16.675em
     display: block
-  > div.info
+  > .info
     width: 16.675em
     height: 7.8125em
-    background-color: #2c3c40
-    color: #e9e9e9
+    background-color: $dark
+    color: $bright
     padding: 1.5em
-    > div.name
+    > .name
       font-family: shout
       font-size: 1.75em
       line-height: 3.125rem
       text-align: center
-    > div.title
+    > .title
       font-size: 1.25em
       line-height: 1.5rem
       text-align: center
 
 /* search.html styles */
-div#searchPageSearch
+#searchPageSearch
   font-size: 1rem
   margin: 1em 0
   overflow: hidden
-  box-shadow: 0 0 1px 1px #e9e9e9
+  box-shadow: 0 0 1px 1px $bright
   &.shadow
-    box-shadow: 0 0 3px 3px #e9e9e9
-  > input#searchSearch
+    box-shadow: 0 0 3px 3px $bright
+  > #searchSearch
     width: calc(100% - 3em)
     float: left
     padding: 1em
-  > i.searchIcon
-    background-color: #e9e9e9
+  > .searchIcon
+    background-color: $bright
     width: 3em
     padding: 1.25em 1em
     float: left
     text-align: center
-div.searchPageMatch
-  background-color: #e9e9e9
+.searchPageMatch
+  background-color: $bright
   padding: 1em
   margin: 1em 0
   &:hover
-    background-color: #cdcdcd
-  > h3.searchPageTitle
+    background-color: $light
+  > .searchPageTitle
     font-size: 1.5em
   margin-bottom: 1rem
-div.searchPageMatch div.searchPageResult
+.searchPageMatch .searchPageResult
   margin-bottom: 0.5em
-div.searchPageMatch span.searchMatch
-  background-color: #ffff88
+.searchPageMatch .searchMatch
+  background-color: $yellow
   padding: 0.2em 0.5em
 
 /* general classes */
@@ -401,7 +408,7 @@ div.searchPageMatch span.searchMatch
   display: table
   clear: both
 .dangerText
-  color: #ef4e49
+  color: $red
 .noStyle
   border-bottom: none
   color: inherit
