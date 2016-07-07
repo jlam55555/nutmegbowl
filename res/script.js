@@ -7,7 +7,7 @@ $(function() {
     html: $("html"), body: $("body"),
     footer: $("footer"),
     header: $("header"),
-    shoutButton: $(".shoutButton"),
+    shoutButton: $("div.shoutText > button"),
     mainNav: $("#mainNav"),
     dropdown: $(".dropdown"),
     dropdownLinks: $(".dropdownLinks"),
