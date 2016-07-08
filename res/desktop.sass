@@ -103,20 +103,20 @@ header
 
 /* index.html page styles */
 .scrollButton
-  @extend .pointer, .rounded, .animate
+  @extend .pointer, .rounded
   display: block
   font-size: 1.5rem
   padding: 1em
+  transition: background-color 0.5s
   background-color: rgba(255, 255, 255, 0.5)
   position: fixed
   right: 1em
   z-index: 5
   &:hover
-    background-color: white
+    background-color: rgba(128, 128, 128, 0.5)
   &#downButton
     bottom: 1em
   &#upButton
-    display: none
     bottom: 5em
 .shoutBox
   width: calc(100% + 12.5em)
