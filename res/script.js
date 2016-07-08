@@ -270,11 +270,10 @@ $(function() {
     });
   }
 
-  // resize the page
-  e.window.resize(resizeFunction).resize();
   // resize a little later
   setTimeout(function() {
-    e.window.resize().scroll();
-    e.document.scrollTop(0);
-  }, 200);
+    e.window.resize(resizeFunction).resize();
+    currentIndex = 0;
+    scrollToIndex();
+  }, 100);
 });
