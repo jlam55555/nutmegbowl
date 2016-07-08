@@ -30,7 +30,8 @@ $(function() {
     mainSearchIcon: $(".mainSearchIcon"),
     mainSearch: $("#mainSearch"),
     upButton: $("#upButton"),
-    downButton: $("#downButton")
+    downButton: $("#downButton"),
+    homeButton: $("#homeButton")
   };
   
   // accessory functions
@@ -77,7 +78,7 @@ $(function() {
     }
 
     // set height of shoutBoxes for mobile
-    if(e.window.height() <= 750 && e.shoutBox.length > 0 && e.shoutBox.height() < e.window.height())
+    if(e.window.height() < 1280 && e.shoutBox.length > 0 && e.shoutBox.height() < e.window.height())
       e.shoutBox.height(e.window.height());
 
   };
@@ -206,6 +207,7 @@ $(function() {
     }
     e.mainSearchIcon.toggleClass("active");
     e.dropdown.toggleClass("hidden");
+    e.homeButton.toggleClass("hidden");
   });
   e.mainSearch.keyup(function(event) {
     if(event.which == 13 || $(this).val() == "")
@@ -214,7 +216,7 @@ $(function() {
 
   // homepage scrolling effects; only for desktop
   var topPositions = [], currentIndex = -1, lastScrollTop, scrollOk = true;
-  if(e.shoutBox.length > 0 && e.window.width() > 750) {
+  if(e.shoutBox.length > 0 && e.window.width() >= 1280) {
     var scrollToIndex = function() {
       e.body.css({ overflow: "hidden" });
       var topPosition;
@@ -268,11 +270,9 @@ $(function() {
     setTimeout(function() {
       currentIndex = 0;
       scrollToIndex();
-    }, 150);
+    }, 50);
   }
 
-  // resize a little later
-  setTimeout(function() {
-    e.window.resize(resizeFunction).resize();
-  }, 100);
+  // resize window
+  e.window.resize(resizeFunction).resize().scroll();
 });

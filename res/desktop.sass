@@ -66,6 +66,10 @@ header
       background-color: $main
       color: white
       font-size: 1rem
+    > #homeButton
+      @extend .dropdown
+      &::after
+        content: " "
     > .mainSearchIcon
       @extend .pointer
       vertical-align: top
