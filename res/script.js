@@ -228,10 +228,10 @@ $(function() {
       scrollOk = false;
       setTimeout(function() {
         scrollOk = true;
-      }, 550);
+      }, 700);
       lastScrollTop = e.body.scrollTop();
     };
-    e.window.scroll(function() {
+    var winScroll = function() {
       if(!scrollOk) {
         lastScrollTop = e.body.scrollTop();
         return;
@@ -250,7 +250,7 @@ $(function() {
           currentIndex = topPositions.length-1;
       }
       scrollToIndex();
-    });
+    };
     e.upButton.click(function() {
       if(!scrollOk)
         return;
@@ -272,12 +272,17 @@ $(function() {
         e.upButton.click();
       }
     });
+    setTimeout(function() {
+      currentIndex = 0;
+      scrollToIndex();
+    }, 150);
+    setTimeout(function() {
+      e.window.scroll(winScroll);
+    }, 700);
   }
 
   // resize a little later
   setTimeout(function() {
     e.window.resize(resizeFunction).resize();
-    currentIndex = 0;
-    scrollToIndex();
   }, 100);
 });
