@@ -31,7 +31,9 @@ $(function() {
     mainSearch: $("#mainSearch"),
     upButton: $("#upButton"),
     downButton: $("#downButton"),
-    homeButton: $("#homeButton")
+    homeButton: $("#homeButton"),
+    scrollHint: $("#scrollHint"),
+    scrollHintBackground: $(".scrollHintBackground")
   };
   
   // accessory functions
@@ -215,7 +217,7 @@ $(function() {
   });
 
   // homepage scrolling effects; only for desktop
-  var topPositions = [], currentIndex = -1, lastScrollTop, scrollOk = true;
+  var topPositions = [], currentIndex = -1, lastScrollTop, scrollOk = true, disappearOk = false;
   if(e.shoutBox.length > 0 && e.window.width() >= 1280) {
     var scrollToIndex = function() {
       e.body.css({ overflow: "hidden" });
@@ -245,6 +247,10 @@ $(function() {
         scrollOk = true;
       }, 550);
       lastScrollTop = e.body.scrollTop() || e.html.scrollTop();
+      if(disappearOk) {
+        disappearOk = false;
+        e.scrollHint.add(e.scrollHintBackground).fadeOut();
+      }
     };
     e.upButton.click(function() {
       if(!scrollOk)
@@ -270,7 +276,13 @@ $(function() {
     setTimeout(function() {
       currentIndex = 0;
       scrollToIndex();
+      disappearOk = true;
     }, 50);
+    $("html, body").scrollTop(150);
+    setTimeout(function() {
+      e.scrollHint.add(e.scrollHintBackground).fadeOut();
+      disappearOk = false;
+    }, 2500);
   }
 
   // resize window

@@ -122,6 +122,46 @@ header
     bottom: 1em
   &#upButton
     bottom: 5em
+@keyframes shake
+  0%
+    transform: rotate(0deg)
+  25%
+    transform: rotate(1.5deg)
+  50%
+    transform: rotate(0deg)
+  75%
+    transform: rotate(-1.5deg)
+  100%
+    transform: rotate(0deg)
+#scrollHint
+  font-size: 1.5em
+  padding: 1em
+  position: fixed
+  z-index: 5
+  right: 5em
+  bottom: 1em
+  animation: shake 0.2s 5 linear
+  > .fa-stack
+    font-size: 0.5em
+    > .fa:not(.fa-square)
+      color: white
+.scrollHintBackground
+  @extend .rounded
+  background-color: $yellow
+  opacity: 0.5
+  font-size: 1.5em
+  color: $yellow
+  position: fixed
+  z-index: 4
+  right: 0.75em
+  bottom: 0.75em
+  box-shadow: 0 0 30px 30px $yellow
+  &#scrollHintBackground1
+    height: 4em
+    width: 26em
+  &#scrollHintBackground2
+    height: 8em
+    width: 4em
 .shoutBox
   width: calc(100% + 12.5em)
   height: 67.5em
