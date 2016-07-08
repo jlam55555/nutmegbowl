@@ -102,6 +102,21 @@ header
   font-size: 3.125em
 
 /* index.html page styles */
+.scrollButton
+  @extend .pointer, .rounded, .animate
+  display: block
+  font-size: 1.5rem
+  padding: 1em
+  background-color: rgba(255, 255, 255, 0.5)
+  position: fixed
+  right: 1em
+  z-index: 5
+  &:hover
+    background-color: white
+  &#downButton
+    bottom: 1em
+  &#upButton
+    bottom: 5em
 .shoutBox
   width: calc(100% + 12.5em)
   height: 67.5em

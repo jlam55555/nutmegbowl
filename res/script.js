@@ -7,7 +7,8 @@ $(function() {
     html: $("html"), body: $("body"),
     footer: $("footer"),
     header: $("header"),
-    shoutButton: $("div.shoutText > button"),
+    shoutButton: $(".shoutText > button"),
+    shoutBox: $(".shoutBox"),
     mainNav: $("#mainNav"),
     dropdown: $(".dropdown"),
     dropdownLinks: $(".dropdownLinks"),
@@ -26,7 +27,9 @@ $(function() {
     searchSearch: $("#searchSearch"),
     searchIcon: $(".searchIcon"),
     mainSearchIcon: $(".mainSearchIcon"),
-    mainSearch: $("#mainSearch")
+    mainSearch: $("#mainSearch"),
+    upButton: $("#upButton"),
+    downButton: $("#downButton")
   };
   
   // accessory functions
@@ -63,6 +66,14 @@ $(function() {
     e.mainSearch.innerWidth(e.window.width() - e.mainSearchIcon.innerWidth());
     // resize search icon
     e.mainSearchIcon.css({ height: e.dropdown.innerHeight() || e.mainSearch.innerHeight() });
+  
+    // get positions of shoutBox (for scrolling effects)
+    if(e.shoutBox.length > 0) {
+      topPositions = [];
+      e.shoutBox.each(function() {
+        topPositions.push($(this).position().top);
+      });
+    }
 
   };
   // dropdown code
@@ -196,10 +207,74 @@ $(function() {
       e.mainSearchIcon.click();
   });
 
+  // homepage scrolling effects; only for desktop
+  var topPositions = [], currentIndex = -1, lastScrollTop = e.body.scrollTop(), scrollOk = true;
+  if(e.shoutBox.length > 0 && e.window.width() > 750) {
+    var scrollToIndex = function() {
+      if(currentIndex >= 0 && currentIndex < topPositions.length)
+        e.body.animate({ scrollTop: (topPositions[currentIndex]+(1080-e.window.height())/2) + "px" }, 500);
+      if(currentIndex < 1)
+        e.upButton.fadeOut();
+      else
+        e.upButton.fadeIn();
+      if(currentIndex >= topPositions.length-1)
+        e.downButton.fadeOut();
+      else
+        e.downButton.fadeIn();
+      scrollOk = false;
+      setTimeout(function() {
+        scrollOk = true;
+      }, 550);
+      lastScrollTop = e.body.scrollTop();
+    };
+    e.window.scroll(function() {
+      if(!scrollOk) {
+        lastScrollTop = e.body.scrollTop();
+        return;
+      }
+      if(currentIndex >= 0 && currentIndex < topPositions.length) {
+        if(e.body.scrollTop() < lastScrollTop)
+          currentIndex--;
+        else if(e.body.scrollTop() > lastScrollTop)
+          currentIndex++;
+        else
+          return;
+      } else {
+        if(currentIndex == -1 && e.body.scrollTop()+e.window.height() > topPositions[0] && e.body.scrollTop() > lastScrollTop)
+          currentIndex = 0;
+        else if(currentIndex >= topPositions.length && e.body.scrollTop() < topPositions[topPositions.length-1] + 1080 && e.body.scrollTop() < lastScrollTop)
+          currentIndex = topPositions.length-1;
+      }
+      scrollToIndex();
+    });
+    e.upButton.click(function() {
+      if(!scrollOk)
+        return;
+      currentIndex--;
+      scrollToIndex();
+    });
+    e.downButton.click(function() {
+      if(!scrollOk)
+        return;
+      currentIndex++;
+      scrollToIndex();
+    });
+    e.body.keydown(function(event) {
+      if(event.which == 40 && e.downButton.css("display") == "block") {
+        event.preventDefault();
+        e.downButton.click();
+      } else if(event.which == 38 && e.upButton.css("display") == "block") {
+        event.preventDefault();
+        e.upButton.click();
+      }
+    });
+  }
+
   // resize the page
   e.window.resize(resizeFunction).resize();
   // resize a little later
   setTimeout(function() {
-    e.window.resize();
+    e.window.resize().scroll();
+    e.document.scrollTop(0);
   }, 200);
 });
