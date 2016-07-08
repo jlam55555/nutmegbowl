@@ -91,7 +91,7 @@ $(function() {
       dropdown.css({ top: e.mainNav.height(), left: thisElement.position().left }).removeClass("hidden");
     }, function() {
       e.document.mousemove(function(event) {
-        var x = event.pageX, y = event.pageY-(e.mainNav.hasClass("fixed") ? e.body.scrollTop() : 0), minX = dropdown.position().left, minY = e.mainNav.position().top, maxX = minX + dropdown.width(), maxY = minY + e.mainNav.height() + dropdown.height();
+        var x = event.pageX, y = event.pageY-(e.mainNav.hasClass("fixed") ? e.body.scrollTop() || e.html.scrollTop() : 0), minX = dropdown.position().left, minY = e.mainNav.position().top, maxX = minX + dropdown.width(), maxY = minY + e.mainNav.height() + dropdown.height();
         if(x < minX || x > maxX || y < minY || y > maxY) {
           dropdown.addClass("hidden");
           e.document.off("mousemove");
@@ -110,7 +110,7 @@ $(function() {
   e.googlePlusShareButton.attr({ href: "https://plus.google.com/share?url=" + encodeURIComponent(window.location.href) });
   // scrolling menu
   e.window.scroll(function() {
-    if(e.body.scrollTop() > e.header.height())
+    if((e.body.scrollTop() || e.html.scrollTop()) > e.header.height())
       e.mainNav.addClass("fixed");
     else 
       e.mainNav.removeClass("fixed");
