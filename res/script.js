@@ -225,6 +225,11 @@ $(function() {
       else
         topPosition = e.document.height() - e.window.height();
       $("html, body").animate({ scrollTop: topPosition + "px" }, 500);
+      e.shoutBox.each(function() {
+        $(this).animate({
+          backgroundPositionY: topPosition - $(this).position().top
+        }, 500);
+      });
       if(currentIndex < 0)
         e.upButton.fadeOut();
       else
@@ -236,7 +241,7 @@ $(function() {
       scrollOk = false;
       setTimeout(function() {
         scrollOk = true;
-      }, 700);
+      }, 550);
       lastScrollTop = e.body.scrollTop() || e.html.scrollTop();
     };
     e.upButton.click(function() {
