@@ -75,6 +75,10 @@ $(function() {
       });
     }
 
+    // set height of shoutBoxes for mobile
+    if(e.window.height() <= 750 && e.shoutBox.length > 0 && e.shoutBox.height() < e.window.height())
+      e.shoutBox.height(e.window.height());
+
   };
   // dropdown code
   e.dropdown.each(function() {
