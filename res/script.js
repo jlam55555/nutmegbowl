@@ -6,8 +6,7 @@ $(function() {
     window: $(window),
     html: $("html"),
     body: $("body"),
-    footer: $("footer"),
-    header: $("header"),
+    footer: $("footer"), header: $("header"),
     shoutButton: $(".shoutText > button"),
     shoutBox: $(".shoutBox"),
     mainNav: $("#mainNav"),
@@ -64,12 +63,14 @@ $(function() {
         e.triangle = $(".triangle").css({ borderWidth: "1.6em " + (e.window.width()/2+2) + "px" });
       }
     }
+    setTimeout(function() {
+      // resize search icon
+      e.mainSearchIcon.css({ height: e.dropdown.innerHeight() || e.mainSearch.innerHeight() });
+      // make main search bar full width 
+      e.mainSearch.innerWidth(e.window.width() - e.mainSearchIcon.innerWidth());
+    }, 200);
     // resize size of #sideNav links for mobile
     e.sideNav.children().css({ height: Math.ceil(e.window.height()/8), lineHeight: Math.ceil(e.window.height()/8) + "px" });
-    // make main search bar full width 
-    e.mainSearch.innerWidth(e.window.width() - e.mainSearchIcon.innerWidth());
-    // resize search icon
-    e.mainSearchIcon.css({ height: e.dropdown.innerHeight() || e.mainSearch.innerHeight() });
   
     // get positions of shoutBox (for scrolling effects)
     if(e.shoutBox.length > 0) {
@@ -282,7 +283,7 @@ $(function() {
     setTimeout(function() {
       e.scrollHint.add(e.scrollHintBackground).fadeOut();
       disappearOk = false;
-    }, 2500);
+    }, 5000);
   }
 
   // resize window
